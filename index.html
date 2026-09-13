@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#152244">
+  <title>BKS CRM &amp; LINE LIFF Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#152244; --muted:rgba(21,34,68,.62); --line:rgba(21,34,68,.13); --paper:#f6f5f2; --pink:#e6007e; --orange:#f5821f; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--ink); font-family:"Plus Jakarta Sans","Prompt",sans-serif; background:var(--paper); }
+    main { min-height:100vh; display:grid; grid-template-columns:minmax(280px,.78fr) minmax(540px,1.22fr); }
+    .intro { padding:clamp(36px,6vw,86px); display:flex; flex-direction:column; justify-content:space-between; }
+    .brand { height:32px; width:auto; object-fit:contain; object-position:left center; }
+    .eyebrow { margin:60px 0 16px; color:var(--pink); font-size:12px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; }
+    h1 { max-width:780px; margin:0; font-family:"Prompt",sans-serif; font-size:clamp(40px,5vw,76px); font-weight:600; line-height:1.04; letter-spacing:-.045em; }
+    .lede { max-width:620px; margin:24px 0 0; color:var(--muted); font-size:clamp(16px,1.5vw,20px); line-height:1.7; }
+    .note { margin-top:48px; color:var(--muted); font-size:12px; line-height:1.6; }
+    .choices { padding:clamp(22px,4vw,54px); display:grid; grid-template-rows:1fr 1fr; gap:18px; }
+    .card { position:relative; min-height:300px; overflow:hidden; border:1px solid var(--line); border-radius:26px; color:white; text-decoration:none; isolation:isolate; box-shadow:0 16px 50px rgba(21,34,68,.12); transition:transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 24px 65px rgba(21,34,68,.18); }
+    .card:focus-visible { outline:4px solid rgba(230,0,126,.3); outline-offset:4px; }
+    .card::before { content:""; position:absolute; inset:0; z-index:-2; }
+    .console::before { background:radial-gradient(circle at 76% 25%,rgba(230,0,126,.75),transparent 30%),linear-gradient(135deg,#152244 0%,#253c78 100%); }
+    .liff::before { background:radial-gradient(circle at 18% 18%,rgba(245,130,31,.9),transparent 32%),linear-gradient(135deg,#5c123a 0%,#e6007e 100%); }
+    .card::after { content:""; position:absolute; right:-7%; bottom:-40%; width:58%; aspect-ratio:1; border:1px solid rgba(255,255,255,.22); border-radius:48%; transform:rotate(24deg); z-index:-1; }
+    .card-body { height:100%; padding:clamp(26px,4vw,48px); display:flex; flex-direction:column; justify-content:space-between; }
+    .kicker { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; opacity:.65; }
+    h2 { margin:12px 0 9px; font-family:"Prompt",sans-serif; font-size:clamp(27px,3vw,42px); font-weight:600; letter-spacing:-.035em; }
+    .card p { max-width:480px; margin:0; color:rgba(255,255,255,.72); line-height:1.6; }
+    .open { margin-top:28px; display:inline-flex; align-items:center; gap:12px; font-size:14px; font-weight:700; }
+    .open span { display:grid; place-items:center; width:38px; height:38px; border-radius:50%; background:white; color:var(--ink); transition:transform .35s cubic-bezier(.16,1,.3,1); }
+    .card:hover .open span { transform:translateX(5px); }
+    @media (max-width:900px) { main{grid-template-columns:1fr}.intro{min-height:auto}.choices{grid-template-rows:none}.card{min-height:280px} }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="intro">
+      <div>
+        <img class="brand" src="assets/bks-logo.png" alt="บขส.">
+        <p class="eyebrow">Interactive product prototype</p>
+        <h1>CRM และ Loyalty ที่เชื่อมทุกการเดินทาง</h1>
+        <p class="lede">สำรวจประสบการณ์ของทีมการตลาดและสมาชิก LINE LIFF ผ่านต้นแบบที่คลิกใช้งานได้จริง</p>
+      </div>
+      <p class="note">Prototype เท่านั้น · ข้อมูลทั้งหมดเป็นข้อมูลจำลอง<br>ไม่มีการเชื่อมต่อระบบจริง การส่งข้อความ หรือการบันทึกข้อมูล</p>
+    </section>
+    <section class="choices" aria-label="เลือกต้นแบบ">
+      <a class="card console" href="console.html">
+        <div class="card-body">
+          <div><div class="kicker">Desktop · Internal team</div><h2>Marketing Console</h2><p>จัดการแคมเปญ การอนุมัติ ของรางวัล สมาชิก ข้อความ และสิทธิ์ผู้ใช้งาน</p></div>
+          <div class="open">เปิดต้นแบบ <span aria-hidden="true">→</span></div>
+        </div>
+      </a>
+      <a class="card liff" href="liff.html">
+        <div class="card-body">
+          <div><div class="kicker">Mobile · Passenger</div><h2>LINE LIFF App</h2><p>สมัครสมาชิก ดูแต้ม แลกของรางวัล เปิดคูปอง และจัดการความยินยอม</p></div>
+          <div class="open">เปิดต้นแบบ <span aria-hidden="true">→</span></div>
+        </div>
+      </a>
+    </section>
+  </main>
+</body>
+</html>
