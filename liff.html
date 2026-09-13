@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<title>บขส. Rewards</title>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -10,38 +12,20 @@
 <helmet>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
+  html,body{margin:0;min-height:100%;background:#fff}
   ::-webkit-scrollbar{width:0;height:0}
   input[type=checkbox].pxcb{width:18px;height:18px;border-radius:6px;border:1.5px solid rgba(21,34,68,.25);accent-color:#152244;flex:none}
 </style>
 <script src="./image-slot.js"></script>
 </helmet>
 
-<div style="--ink:#152244;--ink-soft:rgba(21,34,68,.58);--ink-faint:rgba(21,34,68,.38);--hair:rgba(21,34,68,.09);--accent:#e6007e;--accent-soft:#fdeaf3;--accent-ink:#9c0054;--warn:#f5821f;--warn-soft:#fff2e2;--surface:#f7f6f9;--radius-pill:999px;--radius-lg:26px;--radius-md:16px;font-family:'Plus Jakarta Sans','Prompt',sans-serif;color:var(--ink);background:var(--surface);min-height:100vh;padding-bottom:60px">
-
-  <div style="position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--hair);display:flex;align-items:center;gap:18px;padding:14px 28px;flex-wrap:wrap">
-    <img src="assets/bks-logo.png" style="height:20px;width:auto;object-fit:contain">
-    <span style="font-weight:600;font-size:13px;letter-spacing:-.01em;color:var(--ink-soft)">LINE LIFF prototype</span>
-    <div style="display:flex;gap:6px;margin-left:auto;flex-wrap:wrap">
-      <a href="#" onclick="return false" onClick="{{ toL1 }}" style="text-decoration:none;font-size:12px;font-weight:600;padding:6px 12px;border-radius:var(--radius-pill);color:{{ navL1 }};background:{{ bgL1 }};cursor:pointer">L1</a>
-      <a href="#" onclick="return false" onClick="{{ toL2 }}" style="text-decoration:none;font-size:12px;font-weight:600;padding:6px 12px;border-radius:var(--radius-pill);color:{{ navL2 }};background:{{ bgL2 }};cursor:pointer">L2</a>
-      <a href="#" onclick="return false" onClick="{{ toL3 }}" style="text-decoration:none;font-size:12px;font-weight:600;padding:6px 12px;border-radius:var(--radius-pill);color:{{ navL3 }};background:{{ bgL3 }};cursor:pointer">L3</a>
-      <a href="#" onclick="return false" onClick="{{ toL4 }}" style="text-decoration:none;font-size:12px;font-weight:600;padding:6px 12px;border-radius:var(--radius-pill);color:{{ navL4 }};background:{{ bgL4 }};cursor:pointer">L4</a>
-      <a href="#" onclick="return false" onClick="{{ toL5 }}" style="text-decoration:none;font-size:12px;font-weight:600;padding:6px 12px;border-radius:var(--radius-pill);color:{{ navL5 }};background:{{ bgL5 }};cursor:pointer">L5</a>
-      <a href="#" onclick="return false" onClick="{{ toL7 }}" style="text-decoration:none;font-size:12px;font-weight:600;padding:6px 12px;border-radius:var(--radius-pill);color:{{ navL7 }};background:{{ bgL7 }};cursor:pointer">L7</a>
-      <a href="#" onclick="return false" onClick="{{ toL8 }}" style="text-decoration:none;font-size:12px;font-weight:600;padding:6px 12px;border-radius:var(--radius-pill);color:{{ navL8 }};background:{{ bgL8 }};cursor:pointer">L8</a>
-    </div>
-  </div>
-
-  <div style="max-width:980px;margin:0 auto;padding:48px 28px;display:flex;gap:56px;flex-wrap:wrap;align-items:flex-start;justify-content:center">
-
-    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" width="366" height="792" hint-size="366,792">
-      <div style="height:100%;overflow:hidden;position:relative;background:#fff">
-        <div style="height:100%;overflow:auto">
-        <div style="height:60px"></div>
+<div style="--ink:#152244;--ink-soft:rgba(21,34,68,.58);--ink-faint:rgba(21,34,68,.38);--hair:rgba(21,34,68,.09);--accent:#e6007e;--accent-soft:#fdeaf3;--accent-ink:#9c0054;--warn:#f5821f;--warn-soft:#fff2e2;--surface:#f7f6f9;--radius-pill:999px;--radius-lg:26px;--radius-md:16px;font-family:'Plus Jakarta Sans','Prompt',sans-serif;color:var(--ink);background:#fff;min-height:100vh;min-height:100dvh">
+  <div style="width:100%;max-width:480px;min-height:100vh;min-height:100dvh;margin:0 auto;background:#fff;position:relative;display:flex;flex-direction:column;overflow:hidden">
+    <div style="flex:1;min-height:0;overflow:auto">
 
         <!-- L1 Welcome / Consent -->
         <sc-if value="{{ isL1 }}" hint-placeholder-val="{{ true }}">
-        <div style="padding:0 24px 0;display:flex;flex-direction:column">
+        <div style="padding:calc(28px + env(safe-area-inset-top)) 24px 0;display:flex;flex-direction:column">
           <img src="assets/bks-logo.png" style="height:32px;width:auto;object-fit:contain;margin-bottom:20px;display:block">
         
           <h1 style="font-size:23px;font-weight:700;margin:0 0 6px;letter-spacing:-.01em">ยินดีต้อนรับสู่ บขส. Rewards</h1>
@@ -303,7 +287,7 @@
 
         <!-- Bottom tab bar -->
         <sc-if value="{{ showTabs }}">
-        <div style="display:flex;justify-content:space-around;padding:10px 10px 26px;background:#fff;border-top:1px solid var(--hair);position:sticky;bottom:0">
+        <div style="display:flex;justify-content:space-around;padding:10px 10px calc(12px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--hair);position:sticky;bottom:0">
           <div onClick="{{ toL3 }}" style="text-align:center;cursor:pointer;padding:4px 12px;border-radius:14px;background:{{ pillL3 }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ navL3 }}" stroke-width="2" style="margin:0 auto;display:block"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><div style="font-size:10px;margin-top:3px;color:{{ navL3 }};font-weight:600">หน้าหลัก</div></div>
           <div onClick="{{ toL4 }}" style="text-align:center;cursor:pointer;padding:4px 12px;border-radius:14px;background:{{ pillL4 }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ navL4 }}" stroke-width="2" style="margin:0 auto;display:block"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg><div style="font-size:10px;margin-top:3px;color:{{ navL4 }};font-weight:600">ประวัติ</div></div>
           <div onClick="{{ toL5 }}" style="text-align:center;cursor:pointer;padding:4px 12px;border-radius:14px;background:{{ pillL5 }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ navL5 }}" stroke-width="2" style="margin:0 auto;display:block"><rect x="3" y="8" width="18" height="13"/><path d="M12 8v13M3 12h18"/></svg><div style="font-size:10px;margin-top:3px;color:{{ navL5 }};font-weight:600">ของรางวัล</div></div>
@@ -326,16 +310,6 @@
           <button onClick="{{ closeQr }}" style="border:1.5px solid var(--hair);background:#fff;color:var(--ink);font-weight:600;font-size:13.5px;padding:11px 24px;border-radius:var(--radius-pill);cursor:pointer">ปิด</button>
         </div>
         </sc-if>
-      </div>
-    </x-import>
-
-    <div style="max-width:280px;font-size:13px;color:var(--ink-soft);padding-top:8px;display:flex;flex-direction:column;gap:16px">
-      <p style="font-size:15px;font-weight:700;color:var(--ink);margin:0">ทดลองคลิกได้จริง</p>
-      <p style="line-height:1.6;margin:0">เริ่มที่ L1 → ยินยอม → L2 → ถัดไป → L3 หน้าหลัก แล้วใช้แถบล่างสลับ ประวัติ/ของรางวัล/คูปอง/โปรไฟล์ กด "แสดง QR" เพื่อดูโหมดเต็มจอ กด "ดูรายละเอียด" ที่ของรางวัลเพื่อไปหน้ายืนยันการแลก (L6)</p>
-      <div style="background:var(--warn-soft);border-radius:16px;padding:14px;font-size:12px;color:#7a3d0b;line-height:1.6">
-        <b>กรณีแต้มไม่พอ (error copy ตัวอย่าง):</b><br>"แต้มไม่พอ ขาดอีก 40 แต้ม — สะสมเพิ่มได้จากการซื้อตั๋วเที่ยวต่อไป หรือดูของรางวัลราคาย่อมเยาอื่น"
-      </div>
-    </div>
   </div>
 </div>
 </x-dc>
