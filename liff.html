@@ -20,8 +20,8 @@
 </helmet>
 
 <div style="--ink:#152244;--ink-soft:rgba(21,34,68,.58);--ink-faint:rgba(21,34,68,.38);--hair:rgba(21,34,68,.09);--accent:#e6007e;--accent-soft:#fdeaf3;--accent-ink:#9c0054;--warn:#f5821f;--warn-soft:#fff2e2;--surface:#f7f6f9;--radius-pill:999px;--radius-lg:26px;--radius-md:16px;font-family:'Plus Jakarta Sans','Prompt',sans-serif;color:var(--ink);background:#fff;min-height:100vh;min-height:100dvh">
-  <div style="width:100%;max-width:480px;min-height:100vh;min-height:100dvh;margin:0 auto;background:#fff;position:relative;display:flex;flex-direction:column;overflow:hidden">
-    <div style="flex:1;min-height:0;overflow:auto">
+  <div style="width:100%;max-width:480px;height:100vh;height:100dvh;margin:0 auto;background:#fff;position:relative;display:flex;flex-direction:column;overflow:hidden">
+    <div style="flex:1;min-height:0;overflow:auto;box-sizing:border-box;padding-bottom:calc(76px + env(safe-area-inset-bottom))">
 
         <!-- L1 Welcome / Consent -->
         <sc-if value="{{ isL1 }}" hint-placeholder-val="{{ true }}">
@@ -287,7 +287,7 @@
 
         <!-- Bottom tab bar -->
         <sc-if value="{{ showTabs }}">
-        <div style="display:flex;justify-content:space-around;padding:10px 10px calc(12px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--hair);position:sticky;bottom:0">
+        <div style="display:flex;justify-content:space-around;padding:10px 10px calc(12px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid var(--hair);position:absolute;left:0;right:0;bottom:0;z-index:80;box-shadow:0 -8px 24px rgba(21,34,68,.05);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
           <div onClick="{{ toL3 }}" style="text-align:center;cursor:pointer;padding:4px 12px;border-radius:14px;background:{{ pillL3 }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ navL3 }}" stroke-width="2" style="margin:0 auto;display:block"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><div style="font-size:10px;margin-top:3px;color:{{ navL3 }};font-weight:600">หน้าหลัก</div></div>
           <div onClick="{{ toL4 }}" style="text-align:center;cursor:pointer;padding:4px 12px;border-radius:14px;background:{{ pillL4 }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ navL4 }}" stroke-width="2" style="margin:0 auto;display:block"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg><div style="font-size:10px;margin-top:3px;color:{{ navL4 }};font-weight:600">ประวัติ</div></div>
           <div onClick="{{ toL5 }}" style="text-align:center;cursor:pointer;padding:4px 12px;border-radius:14px;background:{{ pillL5 }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ navL5 }}" stroke-width="2" style="margin:0 auto;display:block"><rect x="3" y="8" width="18" height="13"/><path d="M12 8v13M3 12h18"/></svg><div style="font-size:10px;margin-top:3px;color:{{ navL5 }};font-weight:600">ของรางวัล</div></div>
