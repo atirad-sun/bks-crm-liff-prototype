@@ -36,6 +36,9 @@
       <sc-if value="{{ navShowC6 }}">
       <a href="#" onclick="return false" onClick="{{ toC6 }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px;font-size:13.5px;font-weight:500;text-decoration:none;color:{{ inkC6 }};background:{{ bgC6 }};border-radius:var(--radius-md);cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>Rewards catalog</a>
       </sc-if>
+      <sc-if value="{{ navShowC13 }}">
+      <a href="#" onclick="return false" onClick="{{ toC13 }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px 8px 30px;font-size:13px;font-weight:500;text-decoration:none;color:{{ inkC13 }};background:{{ bgC13 }};border-radius:var(--radius-md);cursor:pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5.5 9a7 7 0 0112.6-3M18.5 15a7 7 0 01-12.6 3"/></svg>Reconciliation <span style="font-size:9px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);padding:1px 5px;border-radius:5px">P2</span></a>
+      </sc-if>
 
       <div style="font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);padding:14px 10px 5px;font-weight:600">สมาชิก &amp; ระบบ</div>
       <sc-if value="{{ navShowC7 }}">
@@ -49,6 +52,14 @@
       </sc-if>
       <sc-if value="{{ navShowC10 }}">
       <a href="#" onclick="return false" onClick="{{ toC10 }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px;font-size:13.5px;font-weight:500;text-decoration:none;color:{{ inkC10 }};background:{{ bgC10 }};border-radius:var(--radius-md);cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="10" cy="7" r="4"/></svg>Users &amp; roles</a>
+      </sc-if>
+
+      <div style="font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);padding:14px 10px 5px;font-weight:600">Phase 2</div>
+      <sc-if value="{{ navShowC11 }}">
+      <a href="#" onclick="return false" onClick="{{ toC11 }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px;font-size:13.5px;font-weight:500;text-decoration:none;color:{{ inkC11 }};background:{{ bgC11 }};border-radius:var(--radius-md);cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>Reports</a>
+      </sc-if>
+      <sc-if value="{{ navShowC12 }}">
+      <a href="#" onclick="return false" onClick="{{ toC12 }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px;font-size:13.5px;font-weight:500;text-decoration:none;color:{{ inkC12 }};background:{{ bgC12 }};border-radius:var(--radius-md);cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>Risk</a>
       </sc-if>
     </nav>
     <div style="padding:14px 16px;border-top:1px solid var(--hair);display:flex;align-items:center;gap:10px">
@@ -154,9 +165,9 @@
           <div><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">คำอธิบาย</label><textarea style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit;color:var(--ink);min-height:60px">ส่วนลดค่าโดยสารสำหรับเส้นทางสายอีสานเดือนกันยายน</textarea></div>
           <div><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:8px">ประเภทแคมเปญ</label>
             <div style="display:flex;flex-direction:column;gap:8px">
-              <label style="display:flex;align-items:center;gap:10px;border:1.5px solid var(--ink);border-radius:var(--radius-md);padding:11px 13px;font-size:13.5px;font-weight:500;cursor:pointer"><input type="radio" name="ty" checked style="accent-color:var(--ink)">ส่วนลดค่าโดยสาร</label>
-              <label style="display:flex;align-items:center;gap:10px;border:1px solid var(--hair);border-radius:var(--radius-md);padding:11px 13px;font-size:13.5px;cursor:pointer"><input type="radio" name="ty">คูปอง / e-voucher</label>
-              <label style="display:flex;align-items:center;gap:10px;border:1px solid var(--hair);border-radius:var(--radius-md);padding:11px 13px;font-size:13.5px;cursor:pointer"><input type="radio" name="ty">โบนัสแต้ม</label>
+              <label onClick="{{ setC3TypeDiscount }}" style="display:flex;align-items:center;gap:10px;border:1.5px solid {{ c3TypeDiscountBorder }};border-radius:var(--radius-md);padding:11px 13px;font-size:13.5px;font-weight:500;cursor:pointer"><input type="radio" name="ty" checked="{{ c3TypeIsDiscount }}" style="accent-color:var(--ink)">ส่วนลดค่าโดยสาร</label>
+              <label onClick="{{ setC3TypeCoupon }}" style="display:flex;align-items:center;gap:10px;border:1.5px solid {{ c3TypeCouponBorder }};border-radius:var(--radius-md);padding:11px 13px;font-size:13.5px;cursor:pointer"><input type="radio" name="ty" checked="{{ c3TypeIsCoupon }}">คูปอง / e-voucher</label>
+              <label onClick="{{ setC3TypeBonus }}" style="display:flex;align-items:center;gap:10px;border:1.5px solid {{ c3TypeBonusBorder }};border-radius:var(--radius-md);padding:11px 13px;font-size:13.5px;cursor:pointer"><input type="radio" name="ty" checked="{{ c3TypeIsBonus }}">โบนัสแต้ม</label>
             </div>
           </div>
         </div>
@@ -185,9 +196,34 @@
             <div style="flex:1"><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">ต่อคน</label><input value="2" style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit"></div>
           </div>
           <div style="display:flex;gap:12px">
+            <div style="flex:1"><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">ต่อคนต่อช่วงเวลา</label>
+              <div style="display:flex;gap:8px"><input value="1" style="width:70px;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit">
+              <select style="flex:1;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 10px;font-size:13px;font-family:inherit;background:#fff;color:var(--ink)"><option>ต่อวัน</option><option>ต่อสัปดาห์</option><option selected>ต่อเดือน</option><option>ตลอดแคมเปญ</option></select></div>
+            </div>
+            <div style="flex:1"><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">จำกัดต่อวัน (ทั้งแคมเปญ) <span style="color:var(--ink-faint);font-weight:400">— ไม่บังคับ</span></label><input placeholder="ไม่จำกัด" style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit"></div>
+          </div>
+          <div style="display:flex;gap:12px">
             <div style="flex:1"><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">Priority</label><input value="1" style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit"></div>
             <div style="flex:1"><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">Budget cap</label><input value="฿300,000" style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit"></div>
           </div>
+          <sc-if value="{{ c3IsBonus }}">
+          <div style="border-top:1px dashed var(--hair);padding-top:16px;display:flex;flex-direction:column;gap:16px">
+            <div style="font-size:12.5px;font-weight:600;color:var(--ink-soft)">การให้โบนัสแต้ม</div>
+            <div><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:8px">รูปแบบโบนัส</label>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label style="display:flex;align-items:center;gap:10px;border:1.5px solid var(--ink);border-radius:var(--radius-md);padding:11px 13px;font-size:13.5px;font-weight:500;cursor:pointer"><input type="radio" name="bty" checked style="accent-color:var(--ink)">แต้มคงที่ต่อเที่ยว</label>
+                <label style="display:flex;align-items:center;gap:10px;border:1px solid var(--hair);border-radius:var(--radius-md);padding:11px 13px;font-size:13.5px;cursor:pointer"><input type="radio" name="bty">ตัวคูณ (เช่น x2)</label>
+                <label style="display:flex;align-items:center;gap:10px;border:1px solid var(--hair);border-radius:var(--radius-md);padding:11px 13px;font-size:13.5px;cursor:pointer"><input type="radio" name="bty">แต้มเพิ่มเมื่อยอดถึง X บาท</label>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px">
+              <div style="flex:1"><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">เส้นทาง</label><input value="ทุกเส้นทาง" style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit"></div>
+              <div style="flex:1"><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">วัน</label><input value="ทุกวัน" style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit"></div>
+              <div style="flex:1"><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">ยอดขั้นต่ำ</label><input value="฿200" style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit"></div>
+            </div>
+            <div><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">แต้มสูงสุดที่จ่าย</label><input value="50,000 แต้ม" style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit"><div style="font-size:11.5px;color:var(--ink-faint);margin-top:5px">เทียบเท่ามูลค่า ฿50,000 (ที่มูลค่าแต้มปัจจุบัน ฿1/แต้ม)</div></div>
+          </div>
+          </sc-if>
           <div style="background:var(--warn-soft);border-radius:var(--radius-md);padding:11px 13px;font-size:12px;color:#7a3d0b;display:flex;gap:8px;line-height:1.5">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a35310" stroke-width="1.8" style="flex:none;margin-top:2px"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>
             Priority 1 ชนกับ "ส่วนลดสายเหนือ ส.ค." ที่ Active อยู่ในช่วงเวลาเดียวกัน
@@ -207,23 +243,39 @@
           <sc-for list="{{ c3Rules }}" as="rule" hint-placeholder-count="0">
           <div style="display:flex;gap:8px;align-items:center">
             <select value="{{ rule.attr }}" onChange="{{ rule.onAttr }}" style="flex:1.3;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 10px;font-size:13px;font-family:inherit;color:var(--ink);background:#fff">
+              <optgroup label="ใช้ได้ใน Phase 1">
               <option value="ประเภทสมาชิก">ประเภทสมาชิก</option>
               <option value="อายุ">อายุ</option>
               <option value="เพศ">เพศ</option>
               <option value="พื้นที่/จังหวัด">พื้นที่/จังหวัด</option>
-              <option value="เส้นทางการเดินทาง">เส้นทางการเดินทาง</option>
-              <option value="ความถี่ในการเดินทาง">ความถี่ในการเดินทาง</option>
-              <option value="ยอดใช้จ่าย">ยอดใช้จ่าย</option>
-              <option value="พฤติกรรมการใช้บริการ">พฤติกรรมการใช้บริการ</option>
+              </optgroup>
+              <optgroup label="ต้องมีข้อมูลเที่ยวรถ (Phase 2)">
+              <option disabled title="เปิดใช้เมื่อเชื่อมข้อมูลจาก e-ticket">เส้นทางการเดินทาง (Phase 2)</option>
+              <option disabled title="เปิดใช้เมื่อเชื่อมข้อมูลจาก e-ticket">ความถี่ในการเดินทาง (Phase 2)</option>
+              <option disabled title="เปิดใช้เมื่อเชื่อมข้อมูลจาก e-ticket">ยอดใช้จ่าย (Phase 2)</option>
+              <option disabled title="เปิดใช้เมื่อเชื่อมข้อมูลจาก e-ticket">พฤติกรรมการใช้บริการ (Phase 2)</option>
+              </optgroup>
             </select>
             <input value="{{ rule.value }}" onChange="{{ rule.onValue }}" placeholder="ระบุเงื่อนไข เช่น 25–40 ปี" style="flex:1;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:13px;font-family:inherit">
             <span onClick="{{ rule.remove }}" style="cursor:pointer;color:var(--ink-faint);flex:none;padding:4px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
           </div>
           </sc-for>
           <button onClick="{{ addRule }}" style="border:none;background:none;cursor:pointer;color:var(--ink);font-weight:600;font-size:13px;padding:0;display:flex;align-items:center;gap:6px;align-self:flex-start"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>เพิ่มเงื่อนไข</button>
+          <div style="font-size:11.5px;color:var(--ink-faint);line-height:1.5">เงื่อนไขกลุ่ม Phase 2 (เส้นทาง, ความถี่, ยอดใช้จ่าย, พฤติกรรม) จะเปิดใช้เมื่อเชื่อมข้อมูลจาก e-ticket แล้ว</div>
+          <div style="background:var(--sidebar);border-radius:var(--radius-md);padding:11px 13px;font-size:12.5px;display:flex;justify-content:space-between;align-items:center"><span style="color:var(--ink-soft)">จำนวนคนที่ตรงเงื่อนไขโดยประมาณ</span><span style="font-weight:700;color:var(--accent-ink)">~{{ c3EstimateCount }} คน</span></div>
           <label style="display:flex;gap:10px;align-items:center;font-size:13.5px"><input type="checkbox" checked style="accent-color:var(--ink)">ส่งผ่าน LINE OA</label>
           <div><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">ข้อความ LINE</label><textarea style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit;min-height:70px">รับส่วนลดค่าโดยสาร 50 บาท สายอีสานทั้งเดือน! แลกได้แล้ววันนี้</textarea></div>
-          <div style="font-size:12px;color:var(--ink);font-weight:500;cursor:pointer">Preview บนมือถือ — ดูตัวอย่างข้อความ LINE →</div>
+          <div>
+            <label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:8px">Preview Flex message บนมือถือ</label>
+            <div style="width:240px;border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:#fff">
+              <div style="height:110px;background:repeating-linear-gradient(45deg,var(--sidebar),var(--sidebar) 10px,#fff 10px,#fff 20px);display:flex;align-items:center;justify-content:center;font-size:10.5px;color:var(--ink-faint);font-family:ui-monospace,monospace">campaign image 1040×585</div>
+              <div style="padding:13px 14px 14px">
+                <div style="font-size:13.5px;font-weight:700;margin-bottom:4px">แคมเปญใหม่มาแล้ว!</div>
+                <div style="font-size:11.5px;color:var(--ink-soft);line-height:1.4;margin-bottom:10px">รับส่วนลดค่าโดยสาร 50 บาท สายอีสานทั้งเดือน!<br>แลกได้แล้ววันนี้</div>
+                <div style="border:1px solid var(--accent);color:var(--accent-ink);text-align:center;font-size:12px;font-weight:700;padding:8px;border-radius:8px">แลกสิทธิ์เลย</div>
+              </div>
+            </div>
+          </div>
         </div>
         </sc-if>
 
@@ -264,7 +316,7 @@
           </div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:36px">
-          <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">สิทธิ์ที่ใช้ (real-time)</div><div style="font-size:22px;font-weight:500;margin-top:6px">3,512 / 5,000</div></div>
+          <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">สิทธิ์ที่ใช้ (real-time)</div><div style="font-size:22px;font-weight:500;margin-top:6px">3,512 / 5,000</div><div style="font-size:11.5px;color:var(--ink-faint);margin-top:6px">วันนี้ 312 / 500 · เดือนนี้ 3,512 / 5,000</div></div>
           <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">Budget ใช้ไป</div><div style="font-size:22px;font-weight:500;margin-top:6px">฿135,000 / ฿300,000</div></div>
           <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">เหลือเวลา</div><div style="font-size:22px;font-weight:500;margin-top:6px">9 วัน</div></div>
         </div>
@@ -307,6 +359,12 @@
         </div>
         </sc-if>
         <sc-if value="{{ c5Allowed }}">
+      <div style="display:flex;align-items:center;gap:4px;margin-bottom:20px">
+        <span onClick="{{ c5TabCampaign }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c5TabCampaignBg }};color:{{ c5TabCampaignInk }}">แคมเปญ</span>
+        <span onClick="{{ c5TabPoints }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c5TabPointsBg }};color:{{ c5TabPointsInk }}">ปรับแต้ม manual</span>
+        <span onClick="{{ c5TabSettings }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c5TabSettingsBg }};color:{{ c5TabSettingsInk }}">ค่าตั้งค่าแต้ม</span>
+      </div>
+      <sc-if value="{{ c5IsCampaign }}">
       <div style="display:grid;grid-template-columns:270px 1fr;gap:36px">
         <div>
           <h2 style="font-size:14.5px;font-weight:600;margin:0 0 12px">รออนุมัติ (3)</h2>
@@ -344,6 +402,56 @@
           </div>
         </div>
       </div>
+      </sc-if>
+      <sc-if value="{{ c5IsPoints }}">
+      <div style="display:grid;grid-template-columns:270px 1fr;gap:36px">
+        <div>
+          <h2 style="font-size:14.5px;font-weight:600;margin:0 0 12px">รออนุมัติ (1)</h2>
+          <div style="padding:13px 11px;border-radius:var(--radius-md);background:var(--accent-soft)"><div style="font-size:13px;font-weight:500">ปรับแต้ม -100 · สมหญิง ใจดี</div><div style="font-size:11.5px;color:var(--ink-faint);margin-top:2px">ธนกร (Creator) · วันนี้ 09:40</div></div>
+        </div>
+        <div>
+          <div style="margin-bottom:22px"><h1 style="margin:0 0 6px;font-size:20px;font-weight:500">ปรับแต้ม manual — สมหญิง ใจดี</h1><span style="display:inline-flex;align-items:center;gap:6px;font-size:13px"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);display:inline-block"></span>รออนุมัติ</span></div>
+          <div style="max-width:420px;margin-bottom:22px">
+            <h2 style="font-size:13.5px;font-weight:600;margin:0 0 10px">รายละเอียดคำขอ</h2>
+            <div style="font-size:13.5px;display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--hair);padding:9px 0"><span style="color:var(--ink-soft)">ผู้ขอ</span><span style="font-weight:500">ธนกร (Creator)</span></div>
+              <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--hair);padding:9px 0"><span style="color:var(--ink-soft)">เหตุผล</span><span style="font-weight:500">แก้ไขความผิดพลาดจากระบบเดิม</span></div>
+              <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--hair);padding:9px 0"><span style="color:var(--ink-soft)">ยอดก่อนปรับ</span><span style="font-weight:500">2,340 แต้ม</span></div>
+              <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--hair);padding:9px 0"><span style="color:var(--ink-soft)">ปรับ</span><span style="font-weight:600;color:#dc2626">-100 แต้ม</span></div>
+              <div style="display:flex;justify-content:space-between;padding:9px 0"><span style="color:var(--ink-soft)">ยอดหลังปรับ</span><span style="font-weight:600">2,240 แต้ม</span></div>
+            </div>
+          </div>
+          <div style="max-width:480px;margin-bottom:16px"><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">เหตุผล (จำเป็นเมื่อตีกลับ)</label><textarea placeholder="ระบุเหตุผลที่ตีกลับ..." style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit;min-height:70px"></textarea></div>
+          <div style="display:flex;gap:10px">
+            <button onClick="{{ toC7 }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:600;font-size:13.5px;padding:10px 20px;border-radius:var(--radius-pill)">อนุมัติ</button>
+            <button onClick="{{ toC7 }}" style="border:1px solid var(--hair);background:#fff;color:var(--ink);font-weight:500;font-size:13.5px;padding:10px 20px;border-radius:var(--radius-pill);cursor:pointer">ตีกลับ</button>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+      <sc-if value="{{ c5IsSettings }}">
+      <div style="display:grid;grid-template-columns:270px 1fr;gap:36px">
+        <div>
+          <h2 style="font-size:14.5px;font-weight:600;margin:0 0 12px">รออนุมัติ (1)</h2>
+          <div style="padding:13px 11px;border-radius:var(--radius-md);background:var(--accent-soft)"><div style="font-size:13px;font-weight:500">ช่วงรอรับรู้: 7 → 10 วัน</div><div style="font-size:11.5px;color:var(--ink-faint);margin-top:2px">Admin · 1 ต.ค.</div></div>
+        </div>
+        <div>
+          <div style="margin-bottom:22px"><h1 style="margin:0 0 6px;font-size:20px;font-weight:500">ค่าตั้งค่าแต้ม</h1><span style="display:inline-flex;align-items:center;gap:6px;font-size:13px"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);display:inline-block"></span>รออนุมัติ</span></div>
+          <div style="max-width:420px;margin-bottom:22px">
+            <h2 style="font-size:13.5px;font-weight:600;margin:0 0 10px">Diff</h2>
+            <div style="font-size:12.5px;border:1px solid var(--hair);padding:11px 13px;border-radius:var(--radius-md);display:flex;flex-direction:column;gap:8px">
+              <div><span style="color:var(--ink-soft)">ช่วงรอรับรู้:</span> <span style="text-decoration:line-through;color:var(--ink-faint)">7 วัน</span> → <span style="color:var(--accent-ink);font-weight:600">10 วัน</span></div>
+              <div><span style="color:var(--ink-soft)">มีผลตั้งแต่:</span> <span style="font-weight:600">1 ต.ค. 2569</span></div>
+            </div>
+          </div>
+          <div style="background:var(--warn-soft);border-radius:var(--radius-md);padding:11px 13px;font-size:12px;color:#7a3d0b;max-width:480px;margin-bottom:16px">การเปลี่ยนแปลงนี้กระทบการคำนวณแต้มทั้งระบบ</div>
+          <div style="display:flex;gap:10px">
+            <button onClick="{{ toC8 }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:600;font-size:13.5px;padding:10px 20px;border-radius:var(--radius-pill)">อนุมัติ</button>
+            <button onClick="{{ toC8 }}" style="border:1px solid var(--hair);background:#fff;color:var(--ink);font-weight:500;font-size:13.5px;padding:10px 20px;border-radius:var(--radius-pill);cursor:pointer">ตีกลับ</button>
+          </div>
+        </div>
+      </div>
+      </sc-if>
         </sc-if>
       </div>
       </sc-if>
@@ -468,10 +576,11 @@
             </div>
             <div>
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">
-                <div style="display:flex;gap:4px">
+                <div style="display:flex;gap:4px;flex-wrap:wrap">
                   <span onClick="{{ c7TabLedger }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c7TabLedgerBg }};color:{{ c7TabLedgerInk }}">ledger แต้ม</span>
                   <span onClick="{{ c7TabCoupons }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c7TabCouponsBg }};color:{{ c7TabCouponsInk }}">คูปอง</span>
                   <span onClick="{{ c7TabCampaigns }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c7TabCampaignsBg }};color:{{ c7TabCampaignsInk }}">แคมเปญที่เคยรับ</span>
+                  <span onClick="{{ c7TabRisk }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c7TabRiskBg }};color:{{ c7TabRiskInk }}">สัญญาณความเสี่ยง <span style="font-size:9px;font-weight:700;color:var(--accent-ink)">P2</span></span>
                 </div>
                 <button onClick="{{ openC7Adjust }}" style="border:1px solid var(--hair);background:#fff;color:var(--ink);font-weight:500;font-size:12.5px;padding:8px 15px;border-radius:var(--radius-pill);cursor:pointer">ปรับแต้ม manual</button>
               </div>
@@ -494,6 +603,15 @@
               <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:12px;padding:0 4px 8px;font-size:11px;color:var(--ink-faint);border-bottom:1px solid var(--hair)"><span>แคมเปญ</span><span>วันที่รับ</span><span>ผลลัพธ์</span></div>
               <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:12px;padding:12px 4px;border-bottom:1px solid var(--hair);font-size:13px"><span>โบนัสแต้มวันหยุด</span><span style="color:var(--ink-soft)">28 ส.ค. 2569</span><span style="color:var(--ink-soft)">รับ +50 แต้ม</span></div>
               <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:12px;padding:12px 4px;font-size:13px"><span>ส่วนลดสายเหนือ ส.ค.</span><span style="color:var(--ink-soft)">3 ส.ค. 2569</span><span style="color:var(--ink-soft)">แลกคูปองแล้ว 1 ใบ</span></div>
+              </sc-if>
+
+              <sc-if value="{{ c7IsRisk }}">
+              <div style="background:var(--warn-soft);border-radius:var(--radius-md);padding:12px 15px;font-size:12.5px;color:#7a3d0b;margin-bottom:14px">สมาชิกรายนี้มีสัญญาณความเสี่ยง 2 รายการ — พิจารณาก่อนอนุมัติสิทธิ์เพิ่มเติม</div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="border:1px solid var(--hair);border-radius:var(--radius-md);padding:13px 15px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">บัญชี LINE 3 บัญชีผูกเลขบัตรเดียวกัน</div><div style="font-size:11.5px;color:var(--ink-faint);margin-top:2px">ตรวจพบล่าสุด 10 ก.ย. 2569</div></div><span style="font-size:11px;font-weight:700;color:#b91c1c;background:#fdeceb;padding:4px 10px;border-radius:var(--radius-pill)">สูง</span></div>
+                <div style="border:1px solid var(--hair);border-radius:var(--radius-md);padding:13px 15px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">แลกของรางวัลถี่ผิดปกติ — 8 ครั้งใน 1 ชม.</div><div style="font-size:11.5px;color:var(--ink-faint);margin-top:2px">9 ก.ย. 2569 14:02–14:58</div></div><span style="font-size:11px;font-weight:700;color:#a35310;background:var(--warn-soft);padding:4px 10px;border-radius:var(--radius-pill)">กลาง</span></div>
+              </div>
+              <button onClick="{{ toC12 }}" style="margin-top:16px;border:1px solid var(--hair);background:#fff;color:var(--ink);font-weight:500;font-size:12.5px;padding:9px 16px;border-radius:var(--radius-pill);cursor:pointer">ดูรายละเอียดที่หน้า Risk →</button>
               </sc-if>
             </div>
           </div>
@@ -573,7 +691,7 @@
             <h1 style="margin:0;font-size:24px;font-weight:500">Messages</h1>
             <button onClick="{{ openC9Template }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:600;font-size:13px;padding:10px 18px;border-radius:var(--radius-pill);display:flex;align-items:center;gap:7px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>สร้างข้อความ</button>
           </div>
-          <div style="display:grid;grid-template-columns:1.8fr 1.1fr 1.2fr 1fr 0.7fr 0.7fr 0.7fr;gap:14px;padding:0 4px 9px;font-size:11px;color:var(--ink-faint);border-bottom:1px solid var(--hair)"><span>ชื่อ</span><span>Template</span><span>กลุ่มผู้รับ</span><span>กำหนดส่ง/สถานะ</span><span>ส่ง</span><span>เปิด</span><span>กด</span></div>
+          <div style="display:grid;grid-template-columns:1.8fr 1.1fr 1.2fr 1fr 0.7fr 0.7fr 0.7fr;gap:14px;padding:0 4px 9px;font-size:11px;color:var(--ink-faint);border-bottom:1px solid var(--hair)"><span>ชื่อ</span><span>Template</span><span>กลุ่มผู้รับ</span><span>กำหนดส่ง/สถานะ</span><span>ส่ง</span><span>เข้าถึง</span><span>กด</span></div>
           <div onClick="{{ openC9Stats }}" style="display:grid;grid-template-columns:1.8fr 1.1fr 1.2fr 1fr 0.7fr 0.7fr 0.7fr;gap:14px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--hair);cursor:pointer;font-size:13.5px"><span>ประกาศส่วนลดสายอีสาน</span><span style="color:var(--ink-soft)">ประกาศแคมเปญ</span><span style="color:var(--ink-soft)">ทุกคน</span><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block"></span>ส่งแล้ว</span><span>18,204</span><span>62%</span><span>21%</span></div>
           <div onClick="{{ openC9Stats }}" style="display:grid;grid-template-columns:1.8fr 1.1fr 1.2fr 1fr 0.7fr 0.7fr 0.7fr;gap:14px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--hair);cursor:pointer;font-size:13.5px"><span>คูปองใหม่ร้านกาแฟ A</span><span style="color:var(--ink-soft)">คูปองใหม่</span><span style="color:var(--ink-soft)">เฉพาะจังหวัด</span><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);display:inline-block"></span>ตั้งเวลา 20 ก.ย. 09:00</span><span style="color:var(--ink-faint)">—</span><span style="color:var(--ink-faint)">—</span><span style="color:var(--ink-faint)">—</span></div>
           <div onClick="{{ openC9Stats }}" style="display:grid;grid-template-columns:1.8fr 1.1fr 1.2fr 1fr 0.7fr 0.7fr 0.7fr;gap:14px;align-items:center;padding:14px 4px;font-size:13.5px"><span>แต้มใกล้หมดอายุประจำเดือน</span><span style="color:var(--ink-soft)">แต้มใกล้หมดอายุ</span><span style="color:var(--ink-soft)">แต้มใกล้หมดอายุ 30 วัน</span><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block"></span>ส่งแล้ว</span><span>5,120</span><span>74%</span><span>33%</span></div>
@@ -592,7 +710,8 @@
         </sc-if>
 
         <sc-if value="{{ c9ViewCompose }}">
-        <div style="max-width:640px">
+        <div style="max-width:960px;display:flex;gap:36px;align-items:flex-start">
+          <div style="max-width:640px;flex:1">
           <h1 style="margin:0 0 20px;font-size:22px;font-weight:500">สร้างข้อความ — {{ c9TemplateName }}</h1>
           <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:16px">
             <div><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">หัวข้อ</label><input value="{{ c9TemplateTitle }}" style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit"></div>
@@ -620,6 +739,18 @@
               <button onClick="{{ openC9Confirm }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:600;font-size:13.5px;padding:10px 20px;border-radius:var(--radius-pill)">{{ c9SendLabel }}</button>
             </div>
           </div>
+          </div>
+          <div style="flex:none">
+            <label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:8px">Preview Flex message</label>
+            <div style="width:240px;border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:#fff">
+              <div style="height:110px;background:repeating-linear-gradient(45deg,var(--sidebar),var(--sidebar) 10px,#fff 10px,#fff 20px);display:flex;align-items:center;justify-content:center;font-size:10.5px;color:var(--ink-faint);font-family:ui-monospace,monospace">image 1040×585</div>
+              <div style="padding:13px 14px 14px">
+                <div style="font-size:13.5px;font-weight:700;margin-bottom:4px">{{ c9TemplateTitle }}</div>
+                <div style="font-size:11.5px;color:var(--ink-soft);line-height:1.4;margin-bottom:10px">{{ c9TemplateBody }}</div>
+                <div style="border:1px solid var(--accent);color:var(--accent-ink);text-align:center;font-size:12px;font-weight:700;padding:8px;border-radius:8px">ดูรายละเอียด</div>
+              </div>
+            </div>
+          </div>
         </div>
         </sc-if>
 
@@ -629,8 +760,8 @@
           <div style="display:flex;align-items:center;gap:12px;margin:14px 0 24px"><h1 style="margin:0;font-size:22px;font-weight:500">ประกาศส่วนลดสายอีสาน</h1><span style="display:inline-flex;align-items:center;gap:6px;font-size:13px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block"></span>ส่งแล้ว</span></div>
           <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px">
             <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">ส่งสำเร็จ</div><div style="font-size:24px;font-weight:500;margin-top:6px">18,204</div></div>
-            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">เปิดอ่าน</div><div style="font-size:24px;font-weight:500;margin-top:6px">62%</div></div>
-            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">กดปุ่ม</div><div style="font-size:24px;font-weight:500;margin-top:6px">21%</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">เข้าถึง (Delivered)</div><div style="font-size:24px;font-weight:500;margin-top:6px">62%</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:5px">กดปุ่ม <span title="วัดจากลิงก์เข้า LIFF" style="cursor:help;color:var(--ink-faint);border:1px solid var(--ink-faint);border-radius:50%;width:13px;height:13px;display:inline-flex;align-items:center;justify-content:center;font-size:9.5px">?</span></div><div style="font-size:24px;font-weight:500;margin-top:6px">21%</div></div>
           </div>
         </div>
         </sc-if>
@@ -707,6 +838,169 @@
             <span>{{ c10InviteEmail }}</span><span style="color:var(--ink-soft)">{{ c10InviteEmail }}</span><span>{{ c10InviteRole }}</span><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);display:inline-block"></span>รอรับเชิญ</span><span style="color:var(--ink-faint)">—</span><span></span>
           </div>
           </sc-if>
+        </div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <!-- ============ C11 Reports ============ -->
+      <sc-if value="{{ isC11 }}">
+      <div>
+        <sc-if value="{{ c11Denied }}">
+        <div style="max-width:420px;padding:60px 0;text-align:center;margin:0 auto">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="1.6" style="margin:0 auto 16px;display:block"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+          <div style="font-size:15px;font-weight:600;margin-bottom:6px">ไม่มีสิทธิ์เข้าถึงหน้านี้</div>
+          <div style="font-size:13px;color:var(--ink-soft);line-height:1.6">บทบาท {{ roleLabel }} ไม่มีสิทธิ์ดู Reports<br>Viewer และ Admin/Approver เข้าถึงได้</div>
+        </div>
+        </sc-if>
+        <sc-if value="{{ c11Allowed }}">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:12px;flex-wrap:wrap">
+            <div style="display:flex;align-items:center;gap:10px"><h1 style="margin:0;font-size:24px;font-weight:500">Reports</h1><span style="font-size:10.5px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);padding:3px 8px;border-radius:6px">Phase 2</span></div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button style="border:1px solid var(--hair);background:#fff;border-radius:var(--radius-pill);font-size:12.5px;font-weight:500;padding:8px 15px;cursor:pointer;color:var(--ink)">1–30 ก.ย. 2569 ▾</button>
+              <button style="border:1px solid var(--hair);background:#fff;color:var(--ink);font-weight:500;font-size:12.5px;padding:8px 15px;border-radius:var(--radius-pill);cursor:pointer;display:flex;align-items:center;gap:6px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 20h16"/></svg>Export CSV/Excel</button>
+            </div>
+          </div>
+          <div style="display:flex;gap:4px;margin-bottom:24px">
+            <span onClick="{{ c11TabFunnel }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c11TabFunnelBg }};color:{{ c11TabFunnelInk }}">ภาพรวมแคมเปญ</span>
+            <span onClick="{{ c11TabPoints }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c11TabPointsBg }};color:{{ c11TabPointsInk }}">แต้ม</span>
+            <span onClick="{{ c11TabMembers }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c11TabMembersBg }};color:{{ c11TabMembersInk }}">สมาชิก</span>
+          </div>
+
+          <sc-if value="{{ c11IsFunnel }}">
+          <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:32px">
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:16px"><div style="font-size:11.5px;color:var(--ink-soft)">ส่งถึง</div><div style="font-size:20px;font-weight:600;margin-top:6px">18,204</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:16px"><div style="font-size:11.5px;color:var(--ink-soft)">เปิด/กด</div><div style="font-size:20px;font-weight:600;margin-top:6px">3,823</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:16px"><div style="font-size:11.5px;color:var(--ink-soft)">รับสิทธิ์</div><div style="font-size:20px;font-weight:600;margin-top:6px">2,940</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:16px"><div style="font-size:11.5px;color:var(--ink-soft)">ใช้สิทธิ์</div><div style="font-size:20px;font-weight:600;margin-top:6px">2,105</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:16px;background:var(--sidebar)"><div style="font-size:11.5px;color:var(--ink-soft)">รายได้จากตั๋วที่ใช้สิทธิ์</div><div style="font-size:20px;font-weight:600;margin-top:6px">฿589K</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:12px">
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">ต้นทุนรวม</div><div style="font-size:22px;font-weight:500;margin-top:6px">฿212,000</div><div style="font-size:11px;color:var(--ink-faint);margin-top:4px">ส่วนลด + มูลค่าแต้ม + voucher</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">รายได้จากสิทธิ์ที่ใช้</div><div style="font-size:22px;font-weight:500;margin-top:6px">฿589,000</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px;background:var(--accent-soft)"><div style="font-size:12px;color:var(--accent-ink)">ROI</div><div style="font-size:22px;font-weight:600;margin-top:6px;color:var(--accent-ink)">2.78x</div></div>
+          </div>
+          <h2 style="font-size:14.5px;font-weight:600;margin:18px 0 10px">แยกตามแคมเปญ</h2>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:14px;padding:0 4px 9px;font-size:11px;color:var(--ink-faint);border-bottom:1px solid var(--hair)"><span>แคมเปญ</span><span>ต้นทุน</span><span>รายได้</span><span>ROI</span></div>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:14px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--hair);font-size:13.5px"><span>ส่วนลดสายอีสาน ก.ย.</span><span style="color:var(--ink-soft)">฿135,000</span><span style="color:var(--ink-soft)">฿402,000</span><span style="font-weight:600;color:var(--accent-ink)">2.98x</span></div>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:14px;align-items:center;padding:14px 4px;font-size:13.5px"><span>โบนัสแต้มวันหยุด</span><span style="color:var(--ink-soft)">฿77,000</span><span style="color:var(--ink-soft)">฿187,000</span><span style="font-weight:600;color:var(--accent-ink)">2.43x</span></div>
+          </sc-if>
+
+          <sc-if value="{{ c11IsPoints }}">
+          <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px">
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">แต้มออก</div><div style="font-size:22px;font-weight:500;margin-top:6px">312,400</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">แต้มใช้</div><div style="font-size:22px;font-weight:500;margin-top:6px">198,200</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">แต้มหมดอายุ</div><div style="font-size:22px;font-weight:500;margin-top:6px">14,900</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px;background:var(--sidebar)"><div style="font-size:12px;color:var(--ink-soft)">ยอดคงค้าง (liability)</div><div style="font-size:22px;font-weight:500;margin-top:6px">฿99,300</div><div style="font-size:11px;color:var(--ink-faint);margin-top:4px">99,300 แต้ม ที่มูลค่าแต้ม ฿1/แต้ม</div></div>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ c11IsMembers }}">
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:28px">
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">สมัครใหม่ (ช่วงที่เลือก)</div><div style="font-size:22px;font-weight:500;margin-top:6px">1,842</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">Active 30 วัน</div><div style="font-size:22px;font-weight:500;margin-top:6px">64,210</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">สมาชิกรวม</div><div style="font-size:22px;font-weight:500;margin-top:6px">128,940</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px">
+            <div>
+              <h2 style="font-size:13.5px;font-weight:600;margin:0 0 10px">แยกตามจังหวัด (Top 5)</h2>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--hair)"><span>นครราชสีมา</span><span style="font-weight:600">312</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--hair)"><span>ขอนแก่น</span><span style="font-weight:600">268</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--hair)"><span>กรุงเทพฯ</span><span style="font-weight:600">241</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0"><span>เชียงใหม่</span><span style="font-weight:600">190</span></div>
+              </div>
+            </div>
+            <div>
+              <h2 style="font-size:13.5px;font-weight:600;margin:0 0 10px">แยกตามช่องทางสมัคร</h2>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--hair)"><span>LINE OA</span><span style="font-weight:600">1,510</span></div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0"><span>เคาน์เตอร์/kiosk</span><span style="font-weight:600">332</span></div>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+        </div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <!-- ============ C12 Risk ============ -->
+      <sc-if value="{{ isC12 }}">
+      <div>
+        <sc-if value="{{ c12Denied }}">
+        <div style="max-width:420px;padding:60px 0;text-align:center;margin:0 auto">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="1.6" style="margin:0 auto 16px;display:block"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+          <div style="font-size:15px;font-weight:600;margin-bottom:6px">ไม่มีสิทธิ์เข้าถึงหน้านี้</div>
+          <div style="font-size:13px;color:var(--ink-soft);line-height:1.6">มีเฉพาะ Admin และ Approver ที่เข้าถึง Risk ได้</div>
+        </div>
+        </sc-if>
+        <sc-if value="{{ c12Allowed }}">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><h1 style="margin:0;font-size:24px;font-weight:500">Risk</h1><span style="font-size:10.5px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);padding:3px 8px;border-radius:6px">Phase 2</span></div>
+          <div style="display:flex;gap:4px;margin-bottom:22px">
+            <span onClick="{{ c12TabAlerts }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c12TabAlertsBg }};color:{{ c12TabAlertsInk }}">สมาชิกที่ถูกแจ้งเตือน</span>
+            <span onClick="{{ c12TabRules }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c12TabRulesBg }};color:{{ c12TabRulesInk }}">กฎ (velocity)</span>
+            <span onClick="{{ c12TabBlacklist }}" style="cursor:pointer;padding:7px 14px;border-radius:var(--radius-pill);font-size:12.5px;font-weight:600;background:{{ c12TabBlacklistBg }};color:{{ c12TabBlacklistInk }}">Blacklist</span>
+          </div>
+
+          <sc-if value="{{ c12IsAlerts }}">
+          <div style="display:grid;grid-template-columns:1.6fr 1.4fr 1fr 0.8fr;gap:14px;padding:0 4px 9px;font-size:11px;color:var(--ink-faint);border-bottom:1px solid var(--hair)"><span>สมาชิก</span><span>สัญญาณ</span><span>ความรุนแรง</span><span></span></div>
+          <div style="display:grid;grid-template-columns:1.6fr 1.4fr 1fr 0.8fr;gap:14px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--hair);font-size:13.5px"><span onClick="{{ toC7 }}" style="cursor:pointer;text-decoration:underline">สมหญิง ใจดี</span><span style="color:var(--ink-soft)">บัญชี LINE 3 บัญชีผูกเลขบัตรเดียวกัน</span><span style="font-size:11px;font-weight:700;color:#b91c1c;background:#fdeceb;padding:4px 10px;border-radius:var(--radius-pill);width:fit-content">สูง</span><span onClick="{{ openBlacklistModal }}" style="font-size:12px;color:#dc2626;cursor:pointer;text-decoration:underline;white-space:nowrap">+ blacklist</span></div>
+          <div style="display:grid;grid-template-columns:1.6fr 1.4fr 1fr 0.8fr;gap:14px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--hair);font-size:13.5px"><span onClick="{{ toC7 }}" style="cursor:pointer;text-decoration:underline">วิชัย ทองดี</span><span style="color:var(--ink-soft)">แลกของถี่ผิดปกติ 8 ครั้งใน 1 ชม.</span><span style="font-size:11px;font-weight:700;color:#a35310;background:var(--warn-soft);padding:4px 10px;border-radius:var(--radius-pill);width:fit-content">กลาง</span><span onClick="{{ openBlacklistModal }}" style="font-size:12px;color:#dc2626;cursor:pointer;text-decoration:underline;white-space:nowrap">+ blacklist</span></div>
+          <div style="display:grid;grid-template-columns:1.6fr 1.4fr 1fr 0.8fr;gap:14px;align-items:center;padding:14px 4px;font-size:13.5px"><span onClick="{{ toC7 }}" style="cursor:pointer;text-decoration:underline">อรุณ พงษ์ไทย</span><span style="color:var(--ink-soft)">คูปองถูกใช้จาก 2 จุดขายในเวลาใกล้กัน</span><span style="font-size:11px;font-weight:700;color:#a35310;background:var(--warn-soft);padding:4px 10px;border-radius:var(--radius-pill);width:fit-content">กลาง</span><span onClick="{{ openBlacklistModal }}" style="font-size:12px;color:#dc2626;cursor:pointer;text-decoration:underline;white-space:nowrap">+ blacklist</span></div>
+          </sc-if>
+
+          <sc-if value="{{ c12IsRules }}">
+          <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:22px;max-width:560px;display:flex;flex-direction:column;gap:16px">
+            <div><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">แลกได้สูงสุด (ครั้ง/วัน)</label><input value="5" style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit"></div>
+            <label style="display:flex;gap:10px;align-items:center;font-size:13.5px"><input type="checkbox" checked style="accent-color:var(--ink)">ห้ามผูกเลขบัตรประชาชนเดิมเกิน 1 บัญชี LINE</label>
+            <div><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">แจ้งเตือนเมื่อใช้คูปองจาก ≥ 2 จุดขายภายใน (นาที)</label><input value="30" style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit"></div>
+            <button style="align-self:flex-end;border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:600;font-size:13px;padding:9px 18px;border-radius:var(--radius-pill)">บันทึก</button>
+          </div>
+          </sc-if>
+
+          <sc-if value="{{ c12IsBlacklist }}">
+          <sc-if value="{{ c12BlacklistEmpty }}">
+          <div style="text-align:center;padding:70px 0;border:1px dashed var(--hair);border-radius:var(--radius-lg)">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="1.6" style="margin:0 auto 16px;display:block"><circle cx="12" cy="12" r="9"/><path d="M6 6l12 12"/></svg>
+            <div style="font-size:14.5px;font-weight:600;margin-bottom:6px">ยังไม่มีสมาชิกใน blacklist</div>
+            <div style="font-size:13px;color:var(--ink-soft)">เพิ่มจากสัญญาณความเสี่ยงในแท็บ "สมาชิกที่ถูกแจ้งเตือน"</div>
+          </div>
+          </sc-if>
+          <sc-if value="{{ c12BlacklistHasItems }}">
+          <div style="display:grid;grid-template-columns:1.4fr 1.6fr 1fr 1fr;gap:14px;padding:0 4px 9px;font-size:11px;color:var(--ink-faint);border-bottom:1px solid var(--hair)"><span>สมาชิก</span><span>เหตุผล</span><span>ผลกระทบ</span><span>สถานะ</span></div>
+          <div style="display:grid;grid-template-columns:1.4fr 1.6fr 1fr 1fr;gap:14px;align-items:center;padding:14px 4px;font-size:13.5px"><span>สมหญิง ใจดี</span><span style="color:var(--ink-soft)">บัญชี LINE ซ้ำผูกเลขบัตรเดียวกัน — หมดอายุ 1 ธ.ค. 2569</span><span style="color:var(--ink-soft)">ระงับทั้งหมด</span><span style="display:inline-flex;align-items:center;gap:6px"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);display:inline-block"></span>รออนุมัติ</span></div>
+          </sc-if>
+          </sc-if>
+        </div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <!-- ============ C13 Reconciliation ============ -->
+      <sc-if value="{{ isC13 }}">
+      <div>
+        <sc-if value="{{ c13Denied }}">
+        <div style="max-width:420px;padding:60px 0;text-align:center;margin:0 auto">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="1.6" style="margin:0 auto 16px;display:block"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+          <div style="font-size:15px;font-weight:600;margin-bottom:6px">ไม่มีสิทธิ์เข้าถึงหน้านี้</div>
+          <div style="font-size:13px;color:var(--ink-soft);line-height:1.6">มีเฉพาะ Admin และ Approver ที่เข้าถึง Reconciliation ได้</div>
+        </div>
+        </sc-if>
+        <sc-if value="{{ c13Allowed }}">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px"><h1 style="margin:0;font-size:24px;font-weight:500">Reconciliation</h1><span style="font-size:10.5px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);padding:3px 8px;border-radius:6px">Phase 2</span></div>
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:26px">
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">รายการ sync กลับมาวันนี้</div><div style="font-size:22px;font-weight:500;margin-top:6px">42</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px;background:var(--warn-soft)"><div style="font-size:12px;color:#7a3d0b">รายการต้องตรวจสอบ</div><div style="font-size:22px;font-weight:500;margin-top:6px;color:#7a3d0b">3</div></div>
+            <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:12px;color:var(--ink-soft)">มูลค่ารวมวันนี้</div><div style="font-size:22px;font-weight:500;margin-top:6px">฿2,150</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr 1fr;gap:14px;padding:0 4px 9px;font-size:11px;color:var(--ink-faint);border-bottom:1px solid var(--hair)"><span>คูปอง</span><span>สาขา</span><span>เวลาใช้ (ออฟไลน์)</span><span>ปัญหา</span><span></span></div>
+          <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr 1fr;gap:14px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--hair);font-size:13.5px;background:#fdeceb"><span>BKS50-X92K</span><span style="color:var(--ink-soft)">สาย 4 หมอชิต</span><span style="color:var(--ink-soft)">10 ก.ย. 08:40</span><span style="color:#b91c1c;font-weight:600">ใช้ซ้ำ — ใช้แล้วที่สาขาขอนแก่น 08:12</span><div style="display:flex;gap:8px"><span style="font-size:12px;color:var(--ink);font-weight:600;cursor:pointer;text-decoration:underline">ยอมรับ</span><span style="font-size:12px;color:#dc2626;font-weight:600;cursor:pointer;text-decoration:underline">ปฏิเสธ</span></div></div>
+          <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr 1fr;gap:14px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--hair);font-size:13.5px;background:#fdeceb"><span>BS2210AB</span><span style="color:var(--ink-soft)">สาย 3 เอกมัย</span><span style="color:var(--ink-soft)">10 ก.ย. 09:05</span><span style="color:#b91c1c;font-weight:600">เกิน quota ต่อคนของแคมเปญ</span><div style="display:flex;gap:8px"><span style="font-size:12px;color:var(--ink);font-weight:600;cursor:pointer;text-decoration:underline">ยอมรับ</span><span style="font-size:12px;color:#dc2626;font-weight:600;cursor:pointer;text-decoration:underline">ปฏิเสธ</span></div></div>
+          <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr 1fr;gap:14px;align-items:center;padding:14px 4px;font-size:13.5px"><span>TH88422Y</span><span style="color:var(--ink-soft)">สาย 4 หมอชิต</span><span style="color:var(--ink-soft)">10 ก.ย. 07:58</span><span style="color:var(--ink-faint)">ไม่มีปัญหา</span><span style="color:var(--accent-ink);font-weight:600">รับรู้แล้ว</span></div>
         </div>
         </sc-if>
       </div>
@@ -903,6 +1197,39 @@
       </div>
       </sc-if>
 
+      <sc-if value="{{ blacklistModalOpen }}">
+      <div style="position:fixed;inset:0;background:rgba(21,34,68,.35);display:flex;align-items:center;justify-content:center;z-index:50" onClick="{{ closeBlacklistModal }}">
+        <div style="background:#fff;border-radius:var(--radius-lg);padding:28px;width:460px;max-width:90vw" onClick="{{ stopClick }}">
+          <sc-if value="{{ blacklistFormView }}">
+          <h2 style="margin:0 0 18px;font-size:18px;font-weight:600">เพิ่มเข้า Blacklist</h2>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <div><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">เหตุผล (จำเป็น)</label><textarea placeholder="ระบุเหตุผล..." style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit;min-height:60px"></textarea></div>
+            <div><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">วันหมดอายุ</label><input value="01/12/2569" style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit"></div>
+            <div><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:8px">ผลกระทบ</label>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <label style="display:flex;align-items:center;gap:10px;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 12px;font-size:13px;cursor:pointer"><input type="radio" name="blimp">รับสิทธิ์ไม่ได้</label>
+                <label style="display:flex;align-items:center;gap:10px;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 12px;font-size:13px;cursor:pointer"><input type="radio" name="blimp">แลกไม่ได้</label>
+                <label style="display:flex;align-items:center;gap:10px;border:1.5px solid var(--ink);border-radius:var(--radius-md);padding:10px 12px;font-size:13px;font-weight:500;cursor:pointer"><input type="radio" name="blimp" checked style="accent-color:var(--ink)">ระงับทั้งหมด</label>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px">
+            <button onClick="{{ closeBlacklistModal }}" style="border:none;background:none;cursor:pointer;color:var(--ink-soft);font-weight:500;font-size:13.5px;padding:10px 4px">ยกเลิก</button>
+            <button onClick="{{ submitBlacklist }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:600;font-size:13.5px;padding:10px 20px;border-radius:var(--radius-pill)">ยืนยันส่งขออนุมัติ</button>
+          </div>
+          </sc-if>
+          <sc-if value="{{ blacklistDoneView }}">
+            <div style="text-align:center;padding:10px 0">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" style="margin:0 auto 14px;display:block"><path d="M20 6L9 17l-5-5"/></svg>
+              <div style="font-size:15px;font-weight:600;margin-bottom:8px">ส่งคำขอเข้า blacklist แล้ว</div>
+              <div style="font-size:13px;color:var(--ink-soft)">รออนุมัติจาก Approver — ดูสถานะได้ที่ Approvals</div>
+            </div>
+            <div style="display:flex;justify-content:center;margin-top:18px"><button onClick="{{ closeBlacklistModal }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:600;font-size:13.5px;padding:10px 20px;border-radius:var(--radius-pill)">ปิด</button></div>
+          </sc-if>
+        </div>
+      </div>
+      </sc-if>
+
     </div>
   </div>
 </div>
@@ -916,8 +1243,9 @@ class Component extends DCLogic {
     c7Searched: false, c7Tab: 'ledger', c7Adjust: 0,
     c8Editing: false, c8ConfirmOpen: false, c8Submitted: false,
     c9View: 'list', c9Template: null, c9SendMode: 'now', c9TestSent: false, c9ConfirmOpen: false,
-    c6UploadRewardIdx: 0, c3Rules: [],
+    c6UploadRewardIdx: 0, c3Rules: [], c3Type: 'discount', c5Tab: 'campaign',
     c10InviteOpen: false, c10SuspendIdx: null, c10Logs: { 0: false, 1: false, 2: false, 3: false }, c10Invited: false,
+    c11Tab: 'funnel', c12Tab: 'alerts', blacklistModal: 0, c12BlacklistAdded: false,
   };
 
   go(s) { return () => this.setState({ screen: s }); }
@@ -940,11 +1268,12 @@ class Component extends DCLogic {
     const roleLabel = roleLabels[role];
 
     const perms = {
-      creator: { c5: false, c6: true, c7: true, c8: false, c9: true, c10: false },
-      approver: { c5: true, c6: false, c7: true, c8: false, c9: false, c10: false },
-      admin: { c5: true, c6: true, c7: true, c8: true, c9: true, c10: true },
+      creator: { c5: false, c6: true, c7: true, c8: false, c9: true, c10: false, c11: false, c12: false, c13: false },
+      approver: { c5: true, c6: false, c7: true, c8: false, c9: false, c10: false, c11: true, c12: true, c13: true },
+      admin: { c5: true, c6: true, c7: true, c8: true, c9: true, c10: true, c11: true, c12: true, c13: true },
     };
     const canC5 = perms[role].c5, canC6 = perms[role].c6, canC7 = perms[role].c7, canC8 = perms[role].c8, canC9 = perms[role].c9, canC10 = perms[role].c10;
+    const canC11 = perms[role].c11, canC12 = perms[role].c12, canC13 = perms[role].c13;
 
     const c9ViewLabels = { list: 'Messages', template: 'Messages / เลือก Template', compose: 'Messages / สร้างข้อความ', stats: 'Messages / สถิติ' };
     const crumbs = {
@@ -958,6 +1287,7 @@ class Component extends DCLogic {
       c8: 'Points settings',
       c9: c9ViewLabels[this.state.c9View],
       c10: 'Users & roles',
+      c11: 'Reports', c12: 'Risk', c13: 'Rewards catalog / Reconciliation',
     };
     const items = ['คูปองใหม่ร้านสะดวกซื้อ B', 'ปรับ budget cap สายเหนือ', 'แคมเปญนักเรียน-นักศึกษา'];
 
@@ -975,8 +1305,12 @@ class Component extends DCLogic {
 
     // C7 tab colors
     const c7TabColor = (v) => v === this.state.c7Tab ? { bg: '#152244', ink: '#fff' } : { bg: '#f6f5f2', ink: 'rgba(21,34,68,.55)' };
-    const t1 = c7TabColor('ledger'), t2 = c7TabColor('coupons'), t3 = c7TabColor('campaigns');
+    const t1 = c7TabColor('ledger'), t2 = c7TabColor('coupons'), t3 = c7TabColor('campaigns'), t4 = c7TabColor('risk');
     const adj = this.state.c7Adjust;
+    const c11TabColor = (v) => v === this.state.c11Tab ? { bg: '#152244', ink: '#fff' } : { bg: '#f6f5f2', ink: 'rgba(21,34,68,.55)' };
+    const r1 = c11TabColor('funnel'), r2 = c11TabColor('points'), r3 = c11TabColor('members');
+    const c12TabColor = (v) => v === this.state.c12Tab ? { bg: '#152244', ink: '#fff' } : { bg: '#f6f5f2', ink: 'rgba(21,34,68,.55)' };
+    const k1 = c12TabColor('alerts'), k2 = c12TabColor('rules'), k3 = c12TabColor('blacklist');
 
     const sendModeColor = (v) => v === this.state.c9SendMode ? { bg: '#152244', ink: '#fff' } : { bg: '#f6f5f2', ink: 'rgba(21,34,68,.55)' };
     const sn = sendModeColor('now'), sl = sendModeColor('later');
@@ -986,6 +1320,24 @@ class Component extends DCLogic {
       isC6: s === 'c6', isC7: s === 'c7', isC8: s === 'c8', isC9: s === 'c9', isC10: s === 'c10',
       c5Denied: s === 'c5' && !canC5, c5Allowed: s === 'c5' && canC5,
       navShowC5: canC5, navShowC6: canC6, navShowC7: canC7, navShowC8: canC8, navShowC9: canC9, navShowC10: canC10,
+      navShowC11: canC11, navShowC12: canC12, navShowC13: canC13,
+      isC11: s === 'c11', isC12: s === 'c12', isC13: s === 'c13',
+      toC11: this.go('c11'), toC12: this.go('c12'), toC13: this.go('c13'),
+      inkC11: navColor('c11'), bgC11: navBg('c11'), inkC12: navColor('c12'), bgC12: navBg('c12'), inkC13: navColor('c13'), bgC13: navBg('c13'),
+      c11Denied: s === 'c11' && !canC11, c11Allowed: s === 'c11' && canC11,
+      c12Denied: s === 'c12' && !canC12, c12Allowed: s === 'c12' && canC12,
+      c13Denied: s === 'c13' && !canC13, c13Allowed: s === 'c13' && canC13,
+      c11TabFunnel: () => this.setState({ c11Tab: 'funnel' }), c11TabPoints: () => this.setState({ c11Tab: 'points' }), c11TabMembers: () => this.setState({ c11Tab: 'members' }),
+      c11IsFunnel: this.state.c11Tab === 'funnel', c11IsPoints: this.state.c11Tab === 'points', c11IsMembers: this.state.c11Tab === 'members',
+      c11TabFunnelBg: r1.bg, c11TabFunnelInk: r1.ink, c11TabPointsBg: r2.bg, c11TabPointsInk: r2.ink, c11TabMembersBg: r3.bg, c11TabMembersInk: r3.ink,
+      c12TabAlerts: () => this.setState({ c12Tab: 'alerts' }), c12TabRules: () => this.setState({ c12Tab: 'rules' }), c12TabBlacklist: () => this.setState({ c12Tab: 'blacklist' }),
+      c12IsAlerts: this.state.c12Tab === 'alerts', c12IsRules: this.state.c12Tab === 'rules', c12IsBlacklist: this.state.c12Tab === 'blacklist',
+      c12TabAlertsBg: k1.bg, c12TabAlertsInk: k1.ink, c12TabRulesBg: k2.bg, c12TabRulesInk: k2.ink, c12TabBlacklistBg: k3.bg, c12TabBlacklistInk: k3.ink,
+      c12BlacklistEmpty: !this.state.c12BlacklistAdded, c12BlacklistHasItems: this.state.c12BlacklistAdded,
+      openBlacklistModal: () => this.setState({ blacklistModal: 1 }), closeBlacklistModal: () => this.setState({ blacklistModal: 0 }),
+      blacklistModalOpen: this.state.blacklistModal > 0, blacklistFormView: this.state.blacklistModal === 1, blacklistDoneView: this.state.blacklistModal === 2,
+      submitBlacklist: () => this.setState({ blacklistModal: 2, c12BlacklistAdded: true }),
+      c7TabRisk: () => this.setState({ c7Tab: 'risk' }), c7TabRiskBg: t4.bg, c7TabRiskInk: t4.ink, c7IsRisk: this.state.c7Tab === 'risk',
       crumb: crumbs[s],
       roleLabel,
       toC1: this.go('c1'), toC2: this.go('c2'), toC3: () => this.setState({ screen: 'c3', step: 1 }), toC4: this.go('c4'), toC5: this.go('c5'),
@@ -1013,6 +1365,18 @@ class Component extends DCLogic {
         remove: () => this.setState({ c3Rules: this.state.c3Rules.filter((_, idx) => idx !== i) }),
       })),
       addRule: () => this.setState({ c3Rules: [...(this.state.c3Rules || []), { attr: 'ประเภทสมาชิก', value: '' }] }),
+      c3EstimateCount: Math.max(500, 20000 - (this.state.c3Rules || []).length * 3200).toLocaleString(),
+      setC3TypeDiscount: () => this.setState({ c3Type: 'discount' }), setC3TypeCoupon: () => this.setState({ c3Type: 'coupon' }), setC3TypeBonus: () => this.setState({ c3Type: 'bonus' }),
+      c3TypeIsDiscount: this.state.c3Type === 'discount', c3TypeIsCoupon: this.state.c3Type === 'coupon', c3TypeIsBonus: this.state.c3Type === 'bonus',
+      c3IsBonus: this.state.c3Type === 'bonus',
+      c3TypeDiscountBorder: this.state.c3Type === 'discount' ? 'var(--ink)' : 'var(--hair)',
+      c3TypeCouponBorder: this.state.c3Type === 'coupon' ? 'var(--ink)' : 'var(--hair)',
+      c3TypeBonusBorder: this.state.c3Type === 'bonus' ? 'var(--ink)' : 'var(--hair)',
+      c5TabCampaign: () => this.setState({ c5Tab: 'campaign' }), c5TabPoints: () => this.setState({ c5Tab: 'points' }), c5TabSettings: () => this.setState({ c5Tab: 'settings' }),
+      c5IsCampaign: this.state.c5Tab === 'campaign', c5IsPoints: this.state.c5Tab === 'points', c5IsSettings: this.state.c5Tab === 'settings',
+      c5TabCampaignBg: this.state.c5Tab === 'campaign' ? '#152244' : '#f6f5f2', c5TabCampaignInk: this.state.c5Tab === 'campaign' ? '#fff' : 'rgba(21,34,68,.55)',
+      c5TabPointsBg: this.state.c5Tab === 'points' ? '#152244' : '#f6f5f2', c5TabPointsInk: this.state.c5Tab === 'points' ? '#fff' : 'rgba(21,34,68,.55)',
+      c5TabSettingsBg: this.state.c5Tab === 'settings' ? '#152244' : '#f6f5f2', c5TabSettingsInk: this.state.c5Tab === 'settings' ? '#fff' : 'rgba(21,34,68,.55)',
 
       // C6
       c6Denied: s === 'c6' && !canC6, c6Allowed: s === 'c6' && canC6,
