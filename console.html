@@ -36,10 +36,6 @@
       <sc-if value="{{ navShowC6 }}">
       <a href="#" onclick="return false" onClick="{{ toC6 }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px;font-size:13.5px;font-weight:500;text-decoration:none;color:{{ inkC6 }};background:{{ bgC6 }};border-radius:var(--radius-md);cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>Rewards catalog</a>
       </sc-if>
-      <sc-if value="{{ navShowC13 }}">
-      <a href="#" onclick="return false" onClick="{{ toC13 }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px 8px 30px;font-size:13px;font-weight:500;text-decoration:none;color:{{ inkC13 }};background:{{ bgC13 }};border-radius:var(--radius-md);cursor:pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5.5 9a7 7 0 0112.6-3M18.5 15a7 7 0 01-12.6 3"/></svg>Reconciliation <span style="font-size:9px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);padding:1px 5px;border-radius:5px">P2</span></a>
-      </sc-if>
-
       <div style="font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);padding:14px 10px 5px;font-weight:600">สมาชิก &amp; ระบบ</div>
       <sc-if value="{{ navShowC7 }}">
       <a href="#" onclick="return false" onClick="{{ toC7 }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px;font-size:13.5px;font-weight:500;text-decoration:none;color:{{ inkC7 }};background:{{ bgC7 }};border-radius:var(--radius-md);cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg>Member 360</a>
@@ -54,12 +50,17 @@
       <a href="#" onclick="return false" onClick="{{ toC10 }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px;font-size:13.5px;font-weight:500;text-decoration:none;color:{{ inkC10 }};background:{{ bgC10 }};border-radius:var(--radius-md);cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="10" cy="7" r="4"/></svg>Users &amp; roles</a>
       </sc-if>
 
+      <sc-if value="{{ navShowPhase2 }}">
       <div style="font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);padding:14px 10px 5px;font-weight:600">Phase 2</div>
       <sc-if value="{{ navShowC11 }}">
       <a href="#" onclick="return false" onClick="{{ toC11 }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px;font-size:13.5px;font-weight:500;text-decoration:none;color:{{ inkC11 }};background:{{ bgC11 }};border-radius:var(--radius-md);cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>Reports</a>
       </sc-if>
       <sc-if value="{{ navShowC12 }}">
       <a href="#" onclick="return false" onClick="{{ toC12 }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px;font-size:13.5px;font-weight:500;text-decoration:none;color:{{ inkC12 }};background:{{ bgC12 }};border-radius:var(--radius-md);cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>Risk</a>
+      </sc-if>
+      <sc-if value="{{ navShowC13 }}">
+      <a href="#" onclick="return false" onClick="{{ toC13 }}" style="display:flex;align-items:center;gap:10px;padding:8px 10px;font-size:13.5px;font-weight:500;text-decoration:none;color:{{ inkC13 }};background:{{ bgC13 }};border-radius:var(--radius-md);cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5.5 9a7 7 0 0112.6-3M18.5 15a7 7 0 01-12.6 3"/></svg>Reconciliation</a>
+      </sc-if>
       </sc-if>
     </nav>
     <div style="padding:14px 16px;border-top:1px solid var(--hair);display:flex;align-items:center;gap:10px">
@@ -1320,6 +1321,7 @@ class Component extends DCLogic {
       isC6: s === 'c6', isC7: s === 'c7', isC8: s === 'c8', isC9: s === 'c9', isC10: s === 'c10',
       c5Denied: s === 'c5' && !canC5, c5Allowed: s === 'c5' && canC5,
       navShowC5: canC5, navShowC6: canC6, navShowC7: canC7, navShowC8: canC8, navShowC9: canC9, navShowC10: canC10,
+      navShowPhase2: canC11 || canC12 || canC13,
       navShowC11: canC11, navShowC12: canC12, navShowC13: canC13,
       isC11: s === 'c11', isC12: s === 'c12', isC13: s === 'c13',
       toC11: this.go('c11'), toC12: this.go('c12'), toC13: this.go('c13'),
