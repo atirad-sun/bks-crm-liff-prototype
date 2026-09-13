@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#152244">
 <title>บขส. Rewards</title>
 <script src="./support.js"></script>
 </head>
@@ -12,20 +12,53 @@
 <helmet>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
-  html,body{margin:0;min-height:100%;background:#fff}
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%;background:#eef1f7;overscroll-behavior:none}
+  body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   ::-webkit-scrollbar{width:0;height:0}
   input[type=checkbox].pxcb{width:18px;height:18px;border-radius:6px;border:1.5px solid rgba(21,34,68,.25);accent-color:#152244;flex:none}
+  button,input{font:inherit}
+  button,[onClick],label{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+  button{min-height:44px}
+  button:focus-visible,input:focus-visible,[onClick]:focus-visible{outline:3px solid rgba(230,0,126,.26);outline-offset:2px}
+  input:not([type=checkbox]):not([type=radio]){min-height:48px;font-size:16px!important;transition:border-color .2s ease,box-shadow .2s ease;background:#fff}
+  input:not([type=checkbox]):not([type=radio]):focus{border-color:#e6007e!important;box-shadow:0 0 0 4px rgba(230,0,126,.1)}
+  .app-shell{box-shadow:0 24px 80px rgba(21,34,68,.12)}
+  .app-scroll{scroll-behavior:smooth;overscroll-behavior-y:contain}
+  .screen{animation:screen-in .24s cubic-bezier(.22,1,.36,1) both}
+  .app-header{padding-top:calc(18px + env(safe-area-inset-top))!important}
+  .icon-button{width:44px!important;height:44px!important;min-height:44px!important;transition:background .2s ease,transform .12s ease}
+  .primary-cta{min-height:52px;box-shadow:0 8px 20px rgba(21,34,68,.15);transition:filter .2s ease,transform .12s ease,box-shadow .2s ease}
+  .accent-cta{box-shadow:0 9px 24px rgba(230,0,126,.2)}
+  .primary-cta:active,.reward-card:active,.tab-button:active,.icon-button:active{transform:scale(.98)}
+  .surface-card{border:1px solid rgba(21,34,68,.08)!important;box-shadow:0 8px 28px rgba(21,34,68,.07)}
+  .reward-card{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .reward-card:active{box-shadow:0 3px 12px rgba(21,34,68,.08)}
+  .segmented{gap:4px}
+  .seg-button{border:1px solid transparent;min-height:40px;background:transparent;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+  .bottom-tabs{isolation:isolate}
+  .tab-button{appearance:none;border:0;min-width:56px;min-height:52px;padding:5px 8px!important;font-family:inherit;transition:background .2s ease,transform .12s ease}
+  .tab-button svg{pointer-events:none}
+  .timer-value{font-variant-numeric:tabular-nums}
+  .skip-link{position:absolute;left:12px;top:-60px;z-index:120;background:#fff;color:#152244;padding:10px 14px;border-radius:12px;font-weight:700}
+  .skip-link:focus{top:12px}
+  @keyframes screen-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media (hover:hover){.reward-card:hover{transform:translateY(-2px);border-color:rgba(230,0,126,.22)!important;box-shadow:0 12px 32px rgba(21,34,68,.1)}.primary-cta:hover{filter:brightness(1.06)}}
+  @media (max-width:480px){html,body{background:#fff}.app-shell{box-shadow:none}}
+  @media (orientation:landscape) and (max-height:520px){.app-shell{max-width:680px!important}.app-header{padding-top:12px!important}.bottom-tabs{padding-bottom:calc(6px + env(safe-area-inset-bottom))!important}.app-scroll{padding-bottom:calc(68px + env(safe-area-inset-bottom))!important}}
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </helmet>
 
-<div style="--ink:#152244;--ink-soft:rgba(21,34,68,.58);--ink-faint:rgba(21,34,68,.38);--hair:rgba(21,34,68,.09);--accent:#e6007e;--accent-soft:#fdeaf3;--accent-ink:#9c0054;--warn:#f5821f;--warn-soft:#fff2e2;--surface:#f7f6f9;--radius-pill:999px;--radius-lg:26px;--radius-md:16px;font-family:'Plus Jakarta Sans','Prompt',sans-serif;color:var(--ink);background:#fff;min-height:100vh;min-height:100dvh">
-  <div style="width:100%;max-width:480px;height:100vh;height:100dvh;margin:0 auto;background:#fff;position:relative;display:flex;flex-direction:column;overflow:hidden">
-    <div style="flex:1;min-height:0;overflow:auto;box-sizing:border-box;padding-bottom:calc(76px + env(safe-area-inset-bottom))">
+<div style="--ink:#152244;--ink-soft:rgba(21,34,68,.7);--ink-faint:rgba(21,34,68,.52);--hair:rgba(21,34,68,.1);--accent:#e6007e;--accent-soft:#fdeaf3;--accent-ink:#940050;--warn:#f5821f;--warn-soft:#fff2e2;--surface:#f6f7fa;--radius-pill:999px;--radius-lg:24px;--radius-md:16px;font-family:'Plus Jakarta Sans','Prompt',sans-serif;color:var(--ink);background:transparent;min-height:100vh;min-height:100dvh">
+  <a href="#main-content" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
+  <div class="app-shell" style="width:100%;max-width:480px;height:100vh;height:100dvh;margin:0 auto;background:#fff;position:relative;display:flex;flex-direction:column;overflow:hidden">
+    <main id="main-content" class="app-scroll" style="flex:1;min-height:0;overflow:auto;box-sizing:border-box;padding-bottom:calc(84px + env(safe-area-inset-bottom))">
 
         <!-- L1 Welcome / Consent -->
         <sc-if value="{{ isL1 }}" hint-placeholder-val="{{ true }}">
-        <div style="padding:calc(28px + env(safe-area-inset-top)) 24px 0;display:flex;flex-direction:column">
-          <img src="assets/bks-logo.png" style="height:32px;width:auto;object-fit:contain;margin-bottom:20px;display:block">
+        <div class="screen" style="padding:calc(28px + env(safe-area-inset-top)) 24px 0;display:flex;flex-direction:column">
+          <img src="assets/bks-logo.png" alt="บขส." width="105" height="32" style="height:32px;width:auto;object-fit:contain;margin-bottom:20px;display:block">
         
           <h1 style="font-size:23px;font-weight:700;margin:0 0 6px;letter-spacing:-.01em">ยินดีต้อนรับสู่ บขส. Rewards</h1>
           <p style="font-size:14px;color:var(--ink-soft);margin:0 0 22px;line-height:1.5">สะสมแต้มทุกการเดินทาง แลกส่วนลดและของรางวัลจากพันธมิตร</p>
@@ -40,7 +73,7 @@
           <label style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;margin-bottom:12px;cursor:pointer"><input type="checkbox" class="pxcb" checked style="margin-top:1px"><span>ยินยอมให้ใช้ข้อมูลเพื่อสมัครสมาชิก <b>(จำเป็น)</b></span></label>
           <label style="display:flex;gap:10px;align-items:flex-start;font-size:13.5px;margin-bottom:20px;cursor:pointer"><input type="checkbox" class="pxcb" style="margin-top:1px"><span>รับข่าวสารการตลาดและข้อเสนอจากพันธมิตร <span style="color:var(--ink-faint)">(ปิดได้ภายหลัง)</span></span></label>
           <div style="margin-top:22px;padding-bottom:26px;display:flex;flex-direction:column;gap:10px">
-            <button onClick="{{ toL2 }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:600;font-size:14.5px;padding:15px;border-radius:var(--radius-pill)">ยินยอมและสมัครสมาชิก</button>
+            <button class="primary-cta" onClick="{{ toL2 }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:700;font-size:15px;padding:15px;border-radius:var(--radius-pill)">ยินยอมและสมัครสมาชิก</button>
             <button onClick="{{ toL3 }}" style="border:none;cursor:pointer;background:none;color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px">ปฏิเสธ — ดูข้อมูลแบบไม่ผูกบัญชี</button>
           </div>
         </div>
@@ -48,49 +81,49 @@
 
         <!-- L2 Phone entry -->
         <sc-if value="{{ isL2 }}">
-        <div style="display:flex;flex-direction:column">
-          <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 14px">
-            <button onClick="{{ toL1 }}" style="border:none;background:var(--surface);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+        <div class="screen" style="display:flex;flex-direction:column">
+          <div class="app-header" style="display:flex;align-items:center;gap:12px;padding:22px 20px 14px">
+            <button aria-label="ย้อนกลับ" class="icon-button" onClick="{{ toL1 }}" style="border:none;background:var(--surface);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
             <h2 style="margin:0;font-size:17px;font-weight:700">ยืนยันเบอร์โทรศัพท์</h2>
           </div>
           <div style="padding:4px 24px;display:flex;flex-direction:column;gap:14px">
             <p style="font-size:13.5px;color:var(--ink-soft);margin:0 0 6px;line-height:1.5">กรอกเบอร์โทรศัพท์ของคุณเพื่อรับรหัส OTP สำหรับยืนยันตัวตน</p>
-            <div><label style="display:block;font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:6px">เบอร์โทรศัพท์</label><input value="08X-XXX-XXXX" style="width:100%;box-sizing:border-box;border:1.5px solid var(--hair);border-radius:14px;padding:12px 14px;font-size:14px;font-family:inherit;color:var(--ink)"></div>
+            <div><label for="phone" style="display:block;font-size:13px;font-weight:700;color:var(--ink-soft);margin-bottom:6px">เบอร์โทรศัพท์</label><input id="phone" type="tel" inputmode="numeric" autocomplete="tel" value="08X-XXX-XXXX" style="width:100%;box-sizing:border-box;border:1.5px solid var(--hair);border-radius:14px;padding:12px 14px;font-size:16px;font-family:inherit;color:var(--ink)"></div>
           </div>
-          <div style="padding:16px 24px 26px"><button onClick="{{ toL2b }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:600;font-size:14.5px;padding:15px;border-radius:var(--radius-pill);width:100%">ส่งรหัส OTP</button></div>
+          <div style="padding:16px 24px 26px"><button class="primary-cta" onClick="{{ toL2b }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:700;font-size:15px;padding:15px;border-radius:var(--radius-pill);width:100%">ส่งรหัส OTP</button></div>
         </div>
         </sc-if>
 
         <!-- L2b OTP verify -->
         <sc-if value="{{ isL2b }}">
-        <div style="display:flex;flex-direction:column">
-          <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 14px">
-            <button onClick="{{ toL2 }}" style="border:none;background:var(--surface);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+        <div class="screen" style="display:flex;flex-direction:column">
+          <div class="app-header" style="display:flex;align-items:center;gap:12px;padding:22px 20px 14px">
+            <button aria-label="ย้อนกลับ" class="icon-button" onClick="{{ toL2 }}" style="border:none;background:var(--surface);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
             <h2 style="margin:0;font-size:17px;font-weight:700">กรอกรหัส OTP</h2>
           </div>
           <div style="padding:4px 24px;display:flex;flex-direction:column;gap:14px">
             <p style="font-size:13.5px;color:var(--ink-soft);margin:0 0 6px;line-height:1.5">ส่งรหัส OTP ไปยังเบอร์ 08X-XXX-XXXX แล้ว</p>
             <div><label style="display:block;font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:8px">รหัส OTP</label>
               <div style="display:flex;gap:8px">
-                <input value="4" maxlength="1" style="width:100%;text-align:center;box-sizing:border-box;border:1.5px solid var(--ink);border-radius:14px;padding:12px 0;font-size:18px;font-weight:700;font-family:inherit;color:var(--ink)">
-                <input value="8" maxlength="1" style="width:100%;text-align:center;box-sizing:border-box;border:1.5px solid var(--ink);border-radius:14px;padding:12px 0;font-size:18px;font-weight:700;font-family:inherit;color:var(--ink)">
-                <input value="2" maxlength="1" style="width:100%;text-align:center;box-sizing:border-box;border:1.5px solid var(--ink);border-radius:14px;padding:12px 0;font-size:18px;font-weight:700;font-family:inherit;color:var(--ink)">
-                <input value="" maxlength="1" style="width:100%;text-align:center;box-sizing:border-box;border:1.5px solid var(--hair);border-radius:14px;padding:12px 0;font-size:18px;font-weight:700;font-family:inherit;color:var(--ink)">
-                <input value="" maxlength="1" style="width:100%;text-align:center;box-sizing:border-box;border:1.5px solid var(--hair);border-radius:14px;padding:12px 0;font-size:18px;font-weight:700;font-family:inherit;color:var(--ink)">
-                <input value="" maxlength="1" style="width:100%;text-align:center;box-sizing:border-box;border:1.5px solid var(--hair);border-radius:14px;padding:12px 0;font-size:18px;font-weight:700;font-family:inherit;color:var(--ink)">
+                <input aria-label="รหัส OTP หลักที่ 1" inputmode="numeric" autocomplete="one-time-code" value="4" maxlength="1" style="width:100%;text-align:center;border:1.5px solid var(--ink);border-radius:14px;padding:12px 0;font-size:18px;font-weight:700;color:var(--ink)">
+                <input aria-label="รหัส OTP หลักที่ 2" inputmode="numeric" value="8" maxlength="1" style="width:100%;text-align:center;border:1.5px solid var(--ink);border-radius:14px;padding:12px 0;font-size:18px;font-weight:700;color:var(--ink)">
+                <input aria-label="รหัส OTP หลักที่ 3" inputmode="numeric" value="2" maxlength="1" style="width:100%;text-align:center;border:1.5px solid var(--ink);border-radius:14px;padding:12px 0;font-size:18px;font-weight:700;color:var(--ink)">
+                <input aria-label="รหัส OTP หลักที่ 4" inputmode="numeric" value="" maxlength="1" style="width:100%;text-align:center;border:1.5px solid var(--hair);border-radius:14px;padding:12px 0;font-size:18px;font-weight:700;color:var(--ink)">
+                <input aria-label="รหัส OTP หลักที่ 5" inputmode="numeric" value="" maxlength="1" style="width:100%;text-align:center;border:1.5px solid var(--hair);border-radius:14px;padding:12px 0;font-size:18px;font-weight:700;color:var(--ink)">
+                <input aria-label="รหัส OTP หลักที่ 6" inputmode="numeric" value="" maxlength="1" style="width:100%;text-align:center;border:1.5px solid var(--hair);border-radius:14px;padding:12px 0;font-size:18px;font-weight:700;color:var(--ink)">
               </div>
             </div>
             <button style="border:none;background:none;cursor:pointer;color:var(--ink);font-weight:600;font-size:13px;padding:0;align-self:flex-start">ส่งรหัสอีกครั้ง</button>
           </div>
-          <div style="padding:16px 24px 26px"><button onClick="{{ toL2c }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:600;font-size:14.5px;padding:15px;border-radius:var(--radius-pill);width:100%">ยืนยัน</button></div>
+          <div style="padding:16px 24px 26px"><button class="primary-cta" onClick="{{ toL2c }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:700;font-size:15px;padding:15px;border-radius:var(--radius-pill);width:100%">ยืนยัน</button></div>
         </div>
         </sc-if>
 
         <!-- L2c Personal info -->
         <sc-if value="{{ isL2c }}">
-        <div style="display:flex;flex-direction:column">
-          <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 14px">
-            <button onClick="{{ toL2b }}" style="border:none;background:var(--surface);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+        <div class="screen" style="display:flex;flex-direction:column">
+          <div class="app-header" style="display:flex;align-items:center;gap:12px;padding:22px 20px 14px">
+            <button aria-label="ย้อนกลับ" class="icon-button" onClick="{{ toL2b }}" style="border:none;background:var(--surface);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
             <h2 style="margin:0;font-size:17px;font-weight:700">ข้อมูลส่วนตัว</h2>
           </div>
           <div style="padding:4px 24px;display:flex;flex-direction:column;gap:14px">
@@ -112,23 +145,27 @@
               <span>พบเลขบัตรนี้ในระบบแล้ว — ยืนยันด้วยเบอร์เดิมเพื่อผูกบัญชี LINE นี้เข้ากับสมาชิกเดิม</span>
             </div>
           </div>
-          <div style="padding:16px 24px 26px"><button onClick="{{ toL3 }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:600;font-size:14.5px;padding:15px;border-radius:var(--radius-pill);width:100%">ถัดไป</button></div>
+          <div style="padding:16px 24px 26px"><button class="primary-cta" onClick="{{ toL3 }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:700;font-size:15px;padding:15px;border-radius:var(--radius-pill);width:100%">ถัดไป</button></div>
         </div>
         </sc-if>
 
         <!-- L3 หน้าหลักสมาชิก -->
         <sc-if value="{{ isL3 }}">
-        <div style="min-height:100%;display:flex;flex-direction:column">
-          <div style="padding:22px 22px 6px">
-            <p style="font-size:13px;color:var(--ink-soft);margin:0 0 12px">สวัสดี, คุณสมชาย</p>
-            <div style="background:var(--ink);color:#fff;padding:22px 22px;border-radius:var(--radius-lg);margin-bottom:14px">
+        <div class="screen" style="min-height:100%;display:flex;flex-direction:column">
+          <div class="app-header" style="padding:22px 22px 6px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px">
+              <div><p style="font-size:12px;color:var(--ink-soft);margin:0 0 2px">สวัสดีตอนเช้า</p><div style="font-size:18px;font-weight:800">คุณสมชาย</div></div>
+              <img src="assets/bks-logo.png" alt="บขส." width="78" height="28" style="width:78px;height:28px;object-fit:contain">
+            </div>
+            <div class="surface-card" style="position:relative;overflow:hidden;background:linear-gradient(145deg,#152244 0%,#223565 100%);color:#fff;padding:22px 22px;border-radius:var(--radius-lg);margin-bottom:14px">
+              <div aria-hidden="true" style="position:absolute;width:150px;height:150px;border-radius:50%;right:-45px;top:-70px;background:rgba(230,0,126,.22)"></div>
               <div style="font-size:11px;opacity:.6;letter-spacing:.08em;text-transform:uppercase;font-weight:600">แต้มสะสม</div>
-              <div style="font-weight:800;font-size:38px;line-height:1.15;letter-spacing:-.01em;margin-top:2px">1,240</div>
+              <div style="font-weight:800;font-size:40px;line-height:1.15;letter-spacing:-.02em;margin-top:2px;position:relative">1,240 <span style="font-size:14px;font-weight:600;opacity:.72">แต้ม</span></div>
               <div style="display:inline-flex;align-items:center;gap:7px;font-size:12px;margin-top:10px;background:rgba(255,255,255,.12);padding:6px 12px;border-radius:var(--radius-pill)">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>80 แต้มจะหมดอายุใน 30 วัน
               </div>
             </div>
-            <button onClick="{{ openQr }}" style="border:none;cursor:pointer;background:var(--accent);color:#fff;font-weight:600;font-size:14.5px;padding:15px;border-radius:var(--radius-pill);width:100%;display:flex;align-items:center;justify-content:center;gap:10px">
+            <button class="primary-cta accent-cta" onClick="{{ openQr }}" style="border:none;cursor:pointer;background:var(--accent);color:#fff;font-weight:700;font-size:15px;padding:15px;border-radius:var(--radius-pill);width:100%;display:flex;align-items:center;justify-content:center;gap:10px">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
               แสดง QR สมาชิก
             </button>
@@ -136,34 +173,34 @@
           <div style="padding:16px 22px 4px">
             <h3 style="font-size:14px;font-weight:700;margin:0 0 10px">แนะนำสำหรับคุณ</h3>
             <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:4px">
-              <div onClick="{{ toL5 }}" style="width:150px;flex:none;cursor:pointer;background:#fff;border:1px solid var(--hair);border-radius:var(--radius-md);padding:14px">
-                <img src="assets/reward-bus-discount.jpg" alt="รถโดยสารบนเส้นทางท่องเที่ยว" style="display:block;width:100%;height:56px;object-fit:cover;border-radius:10px;margin-bottom:10px">
+              <button class="reward-card surface-card" onClick="{{ toL5 }}" style="width:168px;min-height:0;text-align:left;flex:none;cursor:pointer;background:#fff;border:1px solid var(--hair);border-radius:var(--radius-md);padding:12px;color:var(--ink)">
+                <img loading="lazy" src="assets/reward-bus-discount.jpg" alt="รถโดยสารบนเส้นทางท่องเที่ยว" width="288" height="128" style="display:block;width:100%;height:72px;object-fit:cover;border-radius:11px;margin-bottom:10px">
                 <div style="font-size:10.5px;color:var(--ink-faint);font-weight:600;text-transform:uppercase;letter-spacing:.04em">คูปอง บขส.</div>
                 <div style="font-size:13.5px;font-weight:700;margin:2px 0 4px">ส่วนลด 50 บาท</div>
                 <div style="font-size:11.5px;color:var(--ink-soft)">ใช้ 100 แต้ม</div>
-              </div>
-              <div onClick="{{ toL5 }}" style="width:150px;flex:none;cursor:pointer;background:#fff;border:1px solid var(--hair);border-radius:var(--radius-md);padding:14px">
-                <img src="assets/reward-cafe-voucher.jpg" alt="เครื่องดื่มและเบเกอรี่สำหรับรางวัลพาร์ทเนอร์" style="display:block;width:100%;height:56px;object-fit:cover;border-radius:10px;margin-bottom:10px">
+              </button>
+              <button class="reward-card surface-card" onClick="{{ toL5 }}" style="width:168px;min-height:0;text-align:left;flex:none;cursor:pointer;background:#fff;border:1px solid var(--hair);border-radius:var(--radius-md);padding:12px;color:var(--ink)">
+                <img loading="lazy" src="assets/reward-cafe-voucher.jpg" alt="เครื่องดื่มและเบเกอรี่สำหรับรางวัลพาร์ทเนอร์" width="288" height="128" style="display:block;width:100%;height:72px;object-fit:cover;border-radius:11px;margin-bottom:10px">
                 <div style="font-size:10.5px;color:var(--ink-faint);font-weight:600;text-transform:uppercase;letter-spacing:.04em">e-voucher</div>
                 <div style="font-size:13.5px;font-weight:700;margin:2px 0 4px">ร้านอาหาร Partner A</div>
                 <div style="font-size:11.5px;color:var(--ink-soft)">ใช้ 80 แต้ม</div>
-              </div>
+              </button>
             </div>
           </div>
           <div style="padding:14px 22px;flex:1">
             <h3 style="font-size:14px;font-weight:700;margin:0 0 6px">คูปองที่ถืออยู่ (2)</h3>
-            <div onClick="{{ toL7 }}" style="display:flex;align-items:center;justify-content:space-between;padding:13px 2px;border-bottom:1px solid var(--hair);cursor:pointer">
+            <button onClick="{{ toL7 }}" style="display:flex;align-items:center;justify-content:space-between;padding:13px 2px;border:none;border-bottom:1px solid var(--hair);background:#fff;width:100%;text-align:left;color:var(--ink);cursor:pointer">
               <div><div style="font-size:13.5px;font-weight:600">ส่วนลด 30 บาท</div><div style="font-size:11.5px;color:var(--ink-faint);margin-top:2px">หมดอายุ 20 ต.ค. 2569</div></div>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--ink-faint)" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
-            </div>
+            </button>
           </div>
         </div>
         </sc-if>
 
         <!-- L4 ประวัติแต้ม -->
         <sc-if value="{{ isL4 }}">
-        <div style="min-height:100%;display:flex;flex-direction:column">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 22px 12px">
+        <div class="screen" style="min-height:100%;display:flex;flex-direction:column">
+          <div class="app-header" style="display:flex;align-items:center;justify-content:space-between;padding:22px 22px 12px">
             <h2 style="margin:0;font-size:19px;font-weight:700">ประวัติแต้ม</h2>
             <button style="border:1.5px solid var(--hair);background:#fff;border-radius:var(--radius-pill);font-size:12px;font-weight:600;padding:7px 14px;cursor:pointer;color:var(--ink)">30 วันล่าสุด ▾</button>
           </div>
@@ -178,18 +215,19 @@
 
         <!-- L5 สิทธิ์และของรางวัล -->
         <sc-if value="{{ isL5 }}">
-        <div style="min-height:100%;display:flex;flex-direction:column">
-          <div style="padding:22px 22px 14px">
+        <div class="screen" style="min-height:100%;display:flex;flex-direction:column">
+          <div class="app-header" style="padding:22px 22px 14px">
             <h2 style="margin:0 0 14px;font-size:19px;font-weight:700">สิทธิ์และของรางวัล</h2>
-            <div style="display:flex;background:var(--surface);border-radius:var(--radius-pill);padding:4px">
-              <div style="flex:1;text-align:center;padding:9px 0;border-radius:var(--radius-pill);background:#fff;border:1px solid var(--hair);font-size:12px;font-weight:700">ทั้งหมด</div>
-              <div style="flex:1;text-align:center;padding:9px 0;border-radius:var(--radius-pill);font-size:12px;font-weight:600;color:var(--ink-faint)">บขส.</div>
-              <div style="flex:1;text-align:center;padding:9px 0;border-radius:var(--radius-pill);font-size:12px;font-weight:600;color:var(--ink-faint)">พาร์ทเนอร์</div>
+            <div class="segmented" role="tablist" aria-label="กรองของรางวัล" style="display:flex;background:var(--surface);border-radius:var(--radius-pill);padding:4px">
+              <button class="seg-button" role="tab" aria-selected="{{ rewardAllSelected }}" onClick="{{ filterAll }}" style="flex:1;text-align:center;padding:8px 0;border-radius:var(--radius-pill);background:{{ rewardAllBg }};border-color:{{ rewardAllBorder }};color:{{ rewardAllInk }};font-size:12px;font-weight:700">ทั้งหมด</button>
+              <button class="seg-button" role="tab" aria-selected="{{ rewardBksSelected }}" onClick="{{ filterBks }}" style="flex:1;text-align:center;padding:8px 0;border-radius:var(--radius-pill);background:{{ rewardBksBg }};border-color:{{ rewardBksBorder }};color:{{ rewardBksInk }};font-size:12px;font-weight:700">บขส.</button>
+              <button class="seg-button" role="tab" aria-selected="{{ rewardPartnerSelected }}" onClick="{{ filterPartner }}" style="flex:1;text-align:center;padding:8px 0;border-radius:var(--radius-pill);background:{{ rewardPartnerBg }};border-color:{{ rewardPartnerBorder }};color:{{ rewardPartnerInk }};font-size:12px;font-weight:700">พาร์ทเนอร์</button>
             </div>
           </div>
           <div style="padding:0 22px;flex:1;display:flex;flex-direction:column;gap:14px">
-            <div style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px">
-              <img src="assets/reward-bus-discount.jpg" alt="รถโดยสารบนเส้นทางท่องเที่ยว" style="display:block;width:100%;height:120px;object-fit:cover;border-radius:14px;margin-bottom:12px">
+            <sc-if value="{{ showBksRewards }}">
+            <div class="surface-card reward-card" style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px">
+              <img loading="lazy" src="assets/reward-bus-discount.jpg" alt="รถโดยสารบนเส้นทางท่องเที่ยว" width="800" height="300" style="display:block;width:100%;height:132px;object-fit:cover;border-radius:14px;margin-bottom:12px">
               <div style="font-size:10.5px;color:var(--ink-faint);font-weight:700;text-transform:uppercase;letter-spacing:.05em">คูปอง บขส.</div>
               <div style="font-size:16px;font-weight:700;margin:3px 0 6px">ส่วนลดค่าโดยสาร 50 บาท</div>
               <p style="font-size:13px;color:var(--ink-soft);margin:0 0 12px;line-height:1.5">ใช้ได้ทุกเส้นทาง ยกเว้นวันหยุดนักขัตฤกษ์</p>
@@ -198,10 +236,10 @@
                 <span style="display:inline-flex;align-items:center;gap:5px"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);display:inline-block"></span>เหลือน้อย</span>
                 <span>หมดอายุ 31 ต.ค. 2569</span>
               </div>
-              <button onClick="{{ toL6 }}" style="border:none;background:none;cursor:pointer;color:var(--ink);font-weight:700;font-size:13.5px;padding:0;display:flex;align-items:center;gap:6px">ดูรายละเอียด <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></button>
+              <button onClick="{{ toL6 }}" style="border:none;background:none;cursor:pointer;color:var(--ink);font-weight:700;font-size:13.5px;padding:0;display:flex;align-items:center;gap:6px">ดูรายละเอียด <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></button>
             </div>
-            <div style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px">
-              <img src="assets/reward-bus-discount.jpg" alt="รถโดยสารและคูปองส่วนลดค่าเดินทาง" style="display:block;width:100%;height:120px;object-fit:cover;object-position:center 58%;border-radius:14px;margin-bottom:12px">
+            <div class="surface-card reward-card" style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px">
+              <img loading="lazy" src="assets/reward-bus-discount.jpg" alt="รถโดยสารและคูปองส่วนลดค่าเดินทาง" width="800" height="300" style="display:block;width:100%;height:132px;object-fit:cover;object-position:center 58%;border-radius:14px;margin-bottom:12px">
               <div style="font-size:10.5px;color:var(--ink-faint);font-weight:700;text-transform:uppercase;letter-spacing:.05em">คูปอง บขส.</div>
               <div style="font-size:16px;font-weight:700;margin:3px 0 6px">ส่วนลดค่าโดยสาร 100 บาท</div>
               <p style="font-size:13px;color:var(--ink-soft);margin:0 0 12px;line-height:1.5">ใช้ได้เส้นทางสายเหนือและอีสาน</p>
@@ -211,8 +249,10 @@
               </div>
               <button onClick="{{ toL6 }}" style="border:none;background:none;cursor:pointer;color:var(--ink);font-weight:700;font-size:13.5px;padding:0;display:flex;align-items:center;gap:6px">ดูรายละเอียด <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></button>
             </div>
-            <div style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px">
-              <img src="assets/reward-cafe-voucher.jpg" alt="เครื่องดื่มและครัวซองต์จากร้านพาร์ทเนอร์" style="display:block;width:100%;height:120px;object-fit:cover;border-radius:14px;margin-bottom:12px">
+            </sc-if>
+            <sc-if value="{{ showPartnerRewards }}">
+            <div class="surface-card reward-card" style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px">
+              <img loading="lazy" src="assets/reward-cafe-voucher.jpg" alt="เครื่องดื่มและครัวซองต์จากร้านพาร์ทเนอร์" width="800" height="300" style="display:block;width:100%;height:132px;object-fit:cover;border-radius:14px;margin-bottom:12px">
               <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
                 <div style="font-size:10.5px;color:var(--ink-faint);font-weight:700;text-transform:uppercase;letter-spacing:.05em">e-voucher · Partner A Café</div>
                 <span style="font-size:10.5px;font-weight:700;color:var(--accent-ink);background:var(--accent-soft);padding:4px 9px;border-radius:var(--radius-pill)">พาร์ทเนอร์</span>
@@ -225,27 +265,28 @@
               </div>
               <button onClick="{{ toL7 }}" style="border:none;background:none;cursor:pointer;color:var(--ink);font-weight:700;font-size:13.5px;padding:0;display:flex;align-items:center;gap:6px">ดูตัวอย่างที่แลกแล้ว <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></button>
             </div>
+            </sc-if>
           </div>
         </div>
         </sc-if>
 
         <!-- L6 ยืนยันการแลก : L5 dimmed + sheet -->
         <sc-if value="{{ isL6 }}">
-        <div style="height:100%;overflow:hidden;position:relative">
+        <div class="screen" style="height:100%;overflow:hidden;position:relative">
           <div style="padding:22px 22px 14px;opacity:.3;pointer-events:none">
             <h2 style="margin:0 0 14px;font-size:19px;font-weight:700">สิทธิ์และของรางวัล</h2>
             <div style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px"><div style="font-size:16px;font-weight:700">ส่วนลดค่าโดยสาร 50 บาท</div></div>
           </div>
-          <div style="position:absolute;inset:0;background:rgba(21,34,68,.4)" onClick="{{ toL5 }}"></div>
-          <div style="position:absolute;left:0;right:0;bottom:0;background:#fff;padding:16px 22px 30px;box-shadow:0 -20px 50px rgba(21,34,68,.18);border-radius:28px 28px 0 0">
+          <div style="position:absolute;inset:0;background:rgba(21,34,68,.52)" onClick="{{ toL5 }}"></div>
+          <div role="dialog" aria-modal="true" aria-labelledby="redeem-title" style="position:absolute;left:0;right:0;bottom:0;background:#fff;padding:16px 22px calc(30px + env(safe-area-inset-bottom));box-shadow:0 -20px 50px rgba(21,34,68,.18);border-radius:28px 28px 0 0">
             <div style="width:38px;height:4px;background:var(--hair);border-radius:99px;margin:0 auto 16px"></div>
-            <h2 style="margin:0 0 4px;font-size:18px;font-weight:700">ยืนยันการแลก</h2>
+            <h2 id="redeem-title" style="margin:0 0 4px;font-size:18px;font-weight:700">ยืนยันการแลก</h2>
             <p style="font-size:13px;color:var(--ink-soft);margin:0 0 16px">ส่วนลดค่าโดยสาร 50 บาท</p>
             <div style="display:flex;justify-content:space-between;font-size:13.5px;padding:10px 0;border-top:1px solid var(--hair)"><span style="color:var(--ink-soft)">แต้มที่ใช้</span><span style="font-weight:700">-100</span></div>
             <div style="display:flex;justify-content:space-between;font-size:13.5px;padding:10px 0;border-top:1px solid var(--hair)"><span style="color:var(--ink-soft)">แต้มก่อนแลก</span><span>1,240</span></div>
             <div style="display:flex;justify-content:space-between;font-size:14px;padding:10px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);margin-bottom:16px"><span style="font-weight:700">แต้มคงเหลือ</span><span style="font-weight:800">1,140</span></div>
             <p style="font-size:11.5px;color:var(--ink-faint);margin:0 0 18px;line-height:1.6">เงื่อนไข: ใช้ได้ 1 ครั้งต่อการเดินทาง ไม่สามารถใช้ร่วมกับส่วนลดอื่น · <b style="color:var(--ink-soft)">แลกแล้วไม่สามารถคืนได้</b></p>
-            <button onClick="{{ toL7 }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:600;font-size:14.5px;padding:15px;border-radius:var(--radius-pill);width:100%;margin-bottom:8px">ยืนยันการแลก</button>
+            <button class="primary-cta" onClick="{{ toL7 }}" style="border:none;cursor:pointer;background:var(--ink);color:#fff;font-weight:700;font-size:15px;padding:15px;border-radius:var(--radius-pill);width:100%;margin-bottom:8px">ยืนยันการแลก</button>
             <button onClick="{{ toL5 }}" style="border:none;background:none;cursor:pointer;color:var(--ink-soft);font-weight:600;font-size:13.5px;padding:8px;width:100%">ยกเลิก</button>
           </div>
         </div>
@@ -253,8 +294,8 @@
 
         <!-- L7 คูปองของฉัน -->
         <sc-if value="{{ isL7 }}">
-        <div style="min-height:100%;display:flex;flex-direction:column">
-          <div style="padding:22px 22px 14px">
+        <div class="screen" style="min-height:100%;display:flex;flex-direction:column">
+          <div class="app-header" style="padding:22px 22px 14px">
             <h2 style="margin:0 0 14px;font-size:19px;font-weight:700">คูปองของฉัน</h2>
             <div style="display:flex;background:var(--surface);border-radius:var(--radius-pill);padding:4px">
               <div style="flex:1;text-align:center;padding:9px 0;border-radius:var(--radius-pill);background:#fff;border:1px solid var(--hair);font-size:12px;font-weight:700">ใช้ได้ (2)</div>
@@ -263,9 +304,9 @@
             </div>
           </div>
           <div style="padding:0 22px;flex:1">
-            <div style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px;margin-bottom:14px">
+            <div class="surface-card" style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px;margin-bottom:14px">
               <div style="display:flex;gap:12px;align-items:flex-start">
-                <img src="assets/reward-bus-discount.jpg" alt="ภาพคูปองส่วนลดค่าโดยสาร" style="display:block;width:56px;height:56px;object-fit:cover;border-radius:12px;flex:none">
+                <img loading="lazy" src="assets/reward-bus-discount.jpg" alt="ภาพคูปองส่วนลดค่าโดยสาร" width="56" height="56" style="display:block;width:56px;height:56px;object-fit:cover;border-radius:12px;flex:none">
                 <div style="flex:1;display:flex;justify-content:space-between;align-items:flex-start">
                   <div><div style="font-size:10.5px;color:var(--ink-faint);font-weight:700;text-transform:uppercase;letter-spacing:.05em">คูปอง บขส.</div><div style="font-size:16px;font-weight:700;margin-top:3px">มูลค่า 50 บาท</div></div>
                   <svg width="38" height="38" viewBox="0 0 24 24" fill="currentColor" style="flex:none;color:var(--ink)"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
@@ -273,14 +314,14 @@
               </div>
               <div style="display:flex;align-items:center;gap:8px;margin:12px 0">
                 <span style="font-family:ui-monospace,monospace;font-size:13px;background:var(--surface);padding:6px 12px;border-radius:var(--radius-pill);font-weight:600">BKS50-X92K</span>
-                <button style="border:none;background:var(--surface);width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></svg></button>
+                <button aria-live="polite" onClick="{{ copyBksCode }}" style="border:1px solid var(--hair);background:var(--surface);color:var(--ink);border-radius:var(--radius-pill);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;padding:7px 12px;font-size:11px;font-weight:700"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></svg>{{ bksCopyLabel }}</button>
               </div>
               <div style="font-size:12px;color:var(--ink-soft);margin-bottom:14px">หมดอายุ 20 ต.ค. 2569 · ใช้ได้ที่เคาน์เตอร์ทุกสาขา</div>
               <button style="border:none;cursor:pointer;background:var(--accent);color:#fff;font-weight:600;font-size:13.5px;padding:11px 20px;border-radius:var(--radius-pill)">ไปจองตั๋ว</button>
             </div>
-            <div style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px;margin-bottom:14px">
+            <div class="surface-card" style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px;margin-bottom:14px">
               <div style="display:flex;gap:12px;align-items:flex-start">
-                <img src="assets/reward-cafe-voucher.jpg" alt="เครื่องดื่มและครัวซองต์จากร้านพาร์ทเนอร์" style="display:block;width:64px;height:64px;object-fit:cover;border-radius:12px;flex:none">
+                <img loading="lazy" src="assets/reward-cafe-voucher.jpg" alt="เครื่องดื่มและครัวซองต์จากร้านพาร์ทเนอร์" width="64" height="64" style="display:block;width:64px;height:64px;object-fit:cover;border-radius:12px;flex:none">
                 <div style="flex:1;min-width:0">
                   <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:3px">
                     <div style="font-size:10.5px;color:var(--ink-faint);font-weight:700;text-transform:uppercase;letter-spacing:.05em">Partner A Café</div>
@@ -294,18 +335,18 @@
               </div>
               <sc-if value="{{ partnerCouponInactive }}">
                 <div style="background:var(--warn-soft);border-radius:14px;padding:13px 14px;margin:14px 0 12px;color:#7a3d0b;font-size:11.5px;line-height:1.55"><b>เปิดใช้เมื่ออยู่ที่หน้าร้านเท่านั้น</b><br>หลังจากกด รหัสจะปรากฏและใช้ได้ภายใน 15 นาที เมื่อหมดเวลาแล้วจะไม่สามารถเปิดรหัสเดิมได้อีก</div>
-                <button onClick="{{ activatePartnerCoupon }}" style="border:none;cursor:pointer;background:var(--accent);color:#fff;font-weight:700;font-size:14px;padding:14px 18px;border-radius:var(--radius-pill);width:100%;display:flex;align-items:center;justify-content:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>ใช้คูปองตอนนี้</button>
+                <button class="primary-cta accent-cta" onClick="{{ activatePartnerCoupon }}" style="border:none;cursor:pointer;background:var(--accent);color:#fff;font-weight:700;font-size:15px;padding:14px 18px;border-radius:var(--radius-pill);width:100%;display:flex;align-items:center;justify-content:center;gap:8px"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>ใช้คูปองตอนนี้</button>
               </sc-if>
               <sc-if value="{{ partnerCouponActive }}">
                 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--warn-soft);border:1px solid rgba(245,130,31,.18);border-radius:14px;padding:12px 14px;margin:14px 0 10px">
                   <div style="font-size:11.5px;color:#7a3d0b;line-height:1.45"><b>แสดงรหัสแก่พนักงาน</b><br>รหัสจะหมดอายุใน</div>
-                  <div style="font-family:ui-monospace,monospace;font-size:25px;font-weight:800;color:#8a4300;letter-spacing:.02em">{{ partnerTimerLabel }}</div>
+                  <div aria-live="polite" class="timer-value" style="font-family:ui-monospace,monospace;font-size:25px;font-weight:800;color:#8a4300;letter-spacing:.02em">{{ partnerTimerLabel }}</div>
                 </div>
                 <div style="background:var(--surface);border-radius:14px;padding:12px 13px;margin-bottom:14px">
                   <div style="font-size:10.5px;color:var(--ink-faint);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">รหัสสำหรับใช้สิทธิ์</div>
                   <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
                     <span style="font-family:ui-monospace,monospace;font-size:14px;font-weight:800;letter-spacing:.04em">PARTNERA-ICE-8K4M</span>
-                    <button onClick="{{ copyPartnerCode }}" style="border:1px solid var(--hair);background:#fff;color:var(--ink);border-radius:var(--radius-pill);padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap">{{ partnerCopyLabel }}</button>
+                    <button aria-live="polite" onClick="{{ copyPartnerCode }}" style="border:1px solid var(--hair);background:#fff;color:var(--ink);border-radius:var(--radius-pill);padding:8px 13px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap">{{ partnerCopyLabel }}</button>
                   </div>
                 </div>
                 <div style="font-size:12px;font-weight:700;margin-bottom:9px">วิธีใช้สิทธิ์ที่ร้าน</div>
@@ -326,15 +367,15 @@
 
         <!-- L8 โปรไฟล์และความยินยอม -->
         <sc-if value="{{ isL8 }}">
-        <div style="min-height:100%;display:flex;flex-direction:column">
-          <div style="padding:22px 22px;flex:1">
+        <div class="screen" style="min-height:100%;display:flex;flex-direction:column">
+          <div class="app-header" style="padding:22px 22px;flex:1">
             <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
               <div style="width:52px;height:52px;background:var(--surface);border-radius:50%;flex:none"></div>
               <div><div style="font-weight:700;font-size:15px">สมชาย ใจดี</div><div style="font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:6px;margin-top:3px">08X-XXX-XXXX <span style="display:inline-flex;align-items:center;gap:5px"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block"></span>ยืนยันตัวตนแล้ว</span></div></div>
             </div>
             <h3 style="font-size:14px;font-weight:700;margin:0 0 4px">ความยินยอม</h3>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--hair)"><span style="font-size:13.5px">ข้อมูลสมาชิก (จำเป็น)</span><span style="font-size:11px;font-weight:700;color:var(--ink-faint);background:var(--surface);padding:5px 11px;border-radius:var(--radius-pill)">เปิดใช้งาน</span></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--hair);margin-bottom:22px"><span style="font-size:13.5px">ข่าวสารการตลาด/พันธมิตร</span><div style="width:40px;height:24px;background:var(--accent);border-radius:99px;position:relative;cursor:pointer"><div style="width:18px;height:18px;background:#fff;border-radius:50%;position:absolute;top:3px;right:3px"></div></div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--hair);margin-bottom:22px"><span style="font-size:13.5px">ข่าวสารการตลาด/พันธมิตร</span><button role="switch" aria-checked="{{ marketingConsent }}" aria-label="รับข่าวสารการตลาดและข้อเสนอจากพันธมิตร" onClick="{{ toggleMarketing }}" style="width:48px;height:28px;min-height:28px;border:none;padding:0;background:{{ marketingBg }};border-radius:99px;position:relative;cursor:pointer"><span style="width:22px;height:22px;background:#fff;border-radius:50%;position:absolute;top:3px;left:{{ marketingKnob }};box-shadow:0 2px 6px rgba(21,34,68,.22);transition:left .2s ease"></span></button></div>
             <button style="border:1.5px solid var(--hair);background:#fff;color:var(--ink);font-weight:600;font-size:14px;padding:14px;border-radius:var(--radius-pill);width:100%;cursor:pointer;margin-bottom:8px">ถอนความยินยอม</button>
             <button style="border:none;background:none;cursor:pointer;color:#dc2626;font-weight:600;font-size:13.5px;padding:8px;width:100%">ขอลบข้อมูลส่วนบุคคล</button>
           </div>
@@ -343,23 +384,23 @@
 
         <!-- Bottom tab bar -->
         <sc-if value="{{ showTabs }}">
-        <div style="display:flex;justify-content:space-around;padding:10px 10px calc(12px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid var(--hair);position:absolute;left:0;right:0;bottom:0;z-index:80;box-shadow:0 -8px 24px rgba(21,34,68,.05);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
-          <div onClick="{{ toL3 }}" style="text-align:center;cursor:pointer;padding:4px 12px;border-radius:14px;background:{{ pillL3 }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ navL3 }}" stroke-width="2" style="margin:0 auto;display:block"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><div style="font-size:10px;margin-top:3px;color:{{ navL3 }};font-weight:600">หน้าหลัก</div></div>
-          <div onClick="{{ toL4 }}" style="text-align:center;cursor:pointer;padding:4px 12px;border-radius:14px;background:{{ pillL4 }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ navL4 }}" stroke-width="2" style="margin:0 auto;display:block"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg><div style="font-size:10px;margin-top:3px;color:{{ navL4 }};font-weight:600">ประวัติ</div></div>
-          <div onClick="{{ toL5 }}" style="text-align:center;cursor:pointer;padding:4px 12px;border-radius:14px;background:{{ pillL5 }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ navL5 }}" stroke-width="2" style="margin:0 auto;display:block"><rect x="3" y="8" width="18" height="13"/><path d="M12 8v13M3 12h18"/></svg><div style="font-size:10px;margin-top:3px;color:{{ navL5 }};font-weight:600">ของรางวัล</div></div>
-          <div onClick="{{ toL7 }}" style="text-align:center;cursor:pointer;padding:4px 12px;border-radius:14px;background:{{ pillL7 }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ navL7 }}" stroke-width="2" style="margin:0 auto;display:block"><path d="M3 10a2 2 0 002-2V6a2 2 0 012-2h10a2 2 0 012 2v2a2 2 0 002 2v4a2 2 0 00-2 2v2a2 2 0 01-2 2H7a2 2 0 01-2-2v-2a2 2 0 00-2-2z"/></svg><div style="font-size:10px;margin-top:3px;color:{{ navL7 }};font-weight:600">คูปอง</div></div>
-          <div onClick="{{ toL8 }}" style="text-align:center;cursor:pointer;padding:4px 12px;border-radius:14px;background:{{ pillL8 }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="{{ navL8 }}" stroke-width="2" style="margin:0 auto;display:block"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg><div style="font-size:10px;margin-top:3px;color:{{ navL8 }};font-weight:600">โปรไฟล์</div></div>
-        </div>
+        <nav aria-label="เมนูหลัก" class="bottom-tabs" style="display:flex;justify-content:space-around;padding:8px 8px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid var(--hair);position:absolute;left:0;right:0;bottom:0;z-index:80;box-shadow:0 -8px 24px rgba(21,34,68,.06);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)">
+          <button aria-label="หน้าหลัก" class="tab-button" onClick="{{ toL3 }}" style="text-align:center;cursor:pointer;border-radius:16px;background:{{ pillL3 }}"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ navL3 }}" stroke-width="2" style="margin:0 auto;display:block"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><div style="font-size:10.5px;margin-top:3px;color:{{ navL3 }};font-weight:700">หน้าหลัก</div></button>
+          <button aria-label="ประวัติแต้ม" class="tab-button" onClick="{{ toL4 }}" style="text-align:center;cursor:pointer;border-radius:16px;background:{{ pillL4 }}"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ navL4 }}" stroke-width="2" style="margin:0 auto;display:block"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg><div style="font-size:10.5px;margin-top:3px;color:{{ navL4 }};font-weight:700">ประวัติ</div></button>
+          <button aria-label="สิทธิ์และของรางวัล" class="tab-button" onClick="{{ toL5 }}" style="text-align:center;cursor:pointer;border-radius:16px;background:{{ pillL5 }}"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ navL5 }}" stroke-width="2" style="margin:0 auto;display:block"><rect x="3" y="8" width="18" height="13"/><path d="M12 8v13M3 12h18"/></svg><div style="font-size:10.5px;margin-top:3px;color:{{ navL5 }};font-weight:700">ของรางวัล</div></button>
+          <button aria-label="คูปองของฉัน" class="tab-button" onClick="{{ toL7 }}" style="text-align:center;cursor:pointer;border-radius:16px;background:{{ pillL7 }}"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ navL7 }}" stroke-width="2" style="margin:0 auto;display:block"><path d="M3 10a2 2 0 002-2V6a2 2 0 012-2h10a2 2 0 012 2v2a2 2 0 002 2v4a2 2 0 00-2 2v2a2 2 0 01-2 2H7a2 2 0 01-2-2v-2a2 2 0 00-2-2z"/></svg><div style="font-size:10.5px;margin-top:3px;color:{{ navL7 }};font-weight:700">คูปอง</div></button>
+          <button aria-label="โปรไฟล์" class="tab-button" onClick="{{ toL8 }}" style="text-align:center;cursor:pointer;border-radius:16px;background:{{ pillL8 }}"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ navL8 }}" stroke-width="2" style="margin:0 auto;display:block"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0116 0v1"/></svg><div style="font-size:10.5px;margin-top:3px;color:{{ navL8 }};font-weight:700">โปรไฟล์</div></button>
+        </nav>
         </sc-if>
-        </div>
+        </main>
 
         <!-- Fullscreen QR overlay -->
         <sc-if value="{{ qrOpen }}">
         <div style="position:absolute;inset:0;background:#fff;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px">
           <div style="position:relative;width:220px;height:220px">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&color=15-22-68&data=https://www.google.com" style="width:220px;height:220px;border-radius:20px;display:block">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&color=15-22-68&data=https://www.google.com" alt="QR รหัสสมาชิก บขส." width="220" height="220" style="width:220px;height:220px;border-radius:20px;display:block">
             <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:6px;box-shadow:0 0 0 4px #fff">
-              <img src="assets/bks-logo.png" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain">
+              <img src="assets/bks-logo.png" alt="" width="52" height="52" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain">
             </div>
           </div>
           <div style="font-weight:800;font-size:16px;letter-spacing:.02em">รหัสสมาชิก 88213 4471</div>
@@ -371,7 +412,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { screen: 'l1', qrOpen: false, otpSent: false, partnerCodeCopied: false, partnerCouponActivated: false, partnerSecondsLeft: 900 };
+  state = { screen: 'l1', rewardFilter: 'all', qrOpen: false, otpSent: false, bksCodeCopied: false, partnerCodeCopied: false, partnerCouponActivated: false, partnerSecondsLeft: 900, marketingConsent: true };
 
   go(s) { return () => this.setState({ screen: s, qrOpen: false }); }
 
@@ -380,6 +421,10 @@ class Component extends DCLogic {
     const active = (v) => v === s ? '#152244' : 'rgba(21,34,68,.38)';
     const navBg = (v) => v === s ? '#fdeaf3' : 'transparent';
     const pill = (v) => v === s ? '#f7f6f9' : 'transparent';
+    const filter = this.state.rewardFilter;
+    const filterBg = (v) => v === filter ? '#ffffff' : 'transparent';
+    const filterBorder = (v) => v === filter ? 'rgba(21,34,68,.1)' : 'transparent';
+    const filterInk = (v) => v === filter ? '#152244' : 'rgba(21,34,68,.58)';
     const remaining = this.state.partnerSecondsLeft;
     const timerLabel = `${Math.floor(remaining / 60)}:${String(remaining % 60).padStart(2, '0')}`;
     return {
@@ -391,6 +436,24 @@ class Component extends DCLogic {
       navL3: active('l3'), navL4: active('l4'), navL5: active('l5'), navL7: active('l7'), navL8: active('l8'),
       bgL3: navBg('l3'), bgL4: navBg('l4'), bgL5: navBg('l5'), bgL7: navBg('l7'), bgL8: navBg('l8'),
       pillL3: pill('l3'), pillL4: pill('l4'), pillL5: pill('l5'), pillL7: pill('l7'), pillL8: pill('l8'),
+      rewardAllBg: filterBg('all'), rewardAllBorder: filterBorder('all'), rewardAllInk: filterInk('all'),
+      rewardBksBg: filterBg('bks'), rewardBksBorder: filterBorder('bks'), rewardBksInk: filterInk('bks'),
+      rewardPartnerBg: filterBg('partner'), rewardPartnerBorder: filterBorder('partner'), rewardPartnerInk: filterInk('partner'),
+      rewardAllSelected: filter === 'all', rewardBksSelected: filter === 'bks', rewardPartnerSelected: filter === 'partner',
+      showBksRewards: filter === 'all' || filter === 'bks',
+      showPartnerRewards: filter === 'all' || filter === 'partner',
+      filterAll: () => this.setState({ rewardFilter: 'all' }),
+      filterBks: () => this.setState({ rewardFilter: 'bks' }),
+      filterPartner: () => this.setState({ rewardFilter: 'partner' }),
+      bksCopyLabel: this.state.bksCodeCopied ? 'คัดลอกแล้ว' : 'คัดลอก',
+      copyBksCode: () => {
+        if (navigator.clipboard) navigator.clipboard.writeText('BKS50-X92K');
+        this.setState({ bksCodeCopied: true });
+      },
+      marketingConsent: this.state.marketingConsent,
+      marketingBg: this.state.marketingConsent ? '#e6007e' : 'rgba(21,34,68,.18)',
+      marketingKnob: this.state.marketingConsent ? '23px' : '3px',
+      toggleMarketing: () => this.setState({ marketingConsent: !this.state.marketingConsent }),
       toL1: this.go('l1'), toL2: this.go('l2'), toL2b: this.go('l2b'), toL2c: this.go('l2c'), toL3: this.go('l3'), toL4: this.go('l4'),
       toL5: this.go('l5'), toL6: this.go('l6'), toL7: this.go('l7'), toL8: this.go('l8'),
       openQr: () => this.setState({ qrOpen: true }),
