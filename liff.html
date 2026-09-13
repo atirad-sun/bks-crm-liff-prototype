@@ -16,7 +16,6 @@
   ::-webkit-scrollbar{width:0;height:0}
   input[type=checkbox].pxcb{width:18px;height:18px;border-radius:6px;border:1.5px solid rgba(21,34,68,.25);accent-color:#152244;flex:none}
 </style>
-<script src="./image-slot.js"></script>
 </helmet>
 
 <div style="--ink:#152244;--ink-soft:rgba(21,34,68,.58);--ink-faint:rgba(21,34,68,.38);--hair:rgba(21,34,68,.09);--accent:#e6007e;--accent-soft:#fdeaf3;--accent-ink:#9c0054;--warn:#f5821f;--warn-soft:#fff2e2;--surface:#f7f6f9;--radius-pill:999px;--radius-lg:26px;--radius-md:16px;font-family:'Plus Jakarta Sans','Prompt',sans-serif;color:var(--ink);background:#fff;min-height:100vh;min-height:100dvh">
@@ -138,13 +137,13 @@
             <h3 style="font-size:14px;font-weight:700;margin:0 0 10px">แนะนำสำหรับคุณ</h3>
             <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:4px">
               <div onClick="{{ toL5 }}" style="width:150px;flex:none;cursor:pointer;background:#fff;border:1px solid var(--hair);border-radius:var(--radius-md);padding:14px">
-                <div style="width:100%;height:56px;background:var(--surface);border-radius:10px;margin-bottom:10px"></div>
+                <img src="assets/reward-bus-discount.jpg" alt="รถโดยสารบนเส้นทางท่องเที่ยว" style="display:block;width:100%;height:56px;object-fit:cover;border-radius:10px;margin-bottom:10px">
                 <div style="font-size:10.5px;color:var(--ink-faint);font-weight:600;text-transform:uppercase;letter-spacing:.04em">คูปอง บขส.</div>
                 <div style="font-size:13.5px;font-weight:700;margin:2px 0 4px">ส่วนลด 50 บาท</div>
                 <div style="font-size:11.5px;color:var(--ink-soft)">ใช้ 100 แต้ม</div>
               </div>
               <div onClick="{{ toL5 }}" style="width:150px;flex:none;cursor:pointer;background:#fff;border:1px solid var(--hair);border-radius:var(--radius-md);padding:14px">
-                <div style="width:100%;height:56px;background:var(--surface);border-radius:10px;margin-bottom:10px"></div>
+                <img src="assets/reward-cafe-voucher.jpg" alt="เครื่องดื่มและเบเกอรี่สำหรับรางวัลพาร์ทเนอร์" style="display:block;width:100%;height:56px;object-fit:cover;border-radius:10px;margin-bottom:10px">
                 <div style="font-size:10.5px;color:var(--ink-faint);font-weight:600;text-transform:uppercase;letter-spacing:.04em">e-voucher</div>
                 <div style="font-size:13.5px;font-weight:700;margin:2px 0 4px">ร้านอาหาร Partner A</div>
                 <div style="font-size:11.5px;color:var(--ink-soft)">ใช้ 80 แต้ม</div>
@@ -189,7 +188,7 @@
           </div>
           <div style="padding:0 22px;flex:1;display:flex;flex-direction:column;gap:14px">
             <div style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px">
-              <div style="width:100%;height:120px;margin-bottom:12px"><image-slot id="reward-bus-50" shape="rounded" radius="14" placeholder="ภาพส่วนลดค่าโดยสาร"></image-slot></div>
+              <img src="assets/reward-bus-discount.jpg" alt="รถโดยสารบนเส้นทางท่องเที่ยว" style="display:block;width:100%;height:120px;object-fit:cover;border-radius:14px;margin-bottom:12px">
               <div style="font-size:10.5px;color:var(--ink-faint);font-weight:700;text-transform:uppercase;letter-spacing:.05em">คูปอง บขส.</div>
               <div style="font-size:16px;font-weight:700;margin:3px 0 6px">ส่วนลดค่าโดยสาร 50 บาท</div>
               <p style="font-size:13px;color:var(--ink-soft);margin:0 0 12px;line-height:1.5">ใช้ได้ทุกเส้นทาง ยกเว้นวันหยุดนักขัตฤกษ์</p>
@@ -201,7 +200,7 @@
               <button onClick="{{ toL6 }}" style="border:none;background:none;cursor:pointer;color:var(--ink);font-weight:700;font-size:13.5px;padding:0;display:flex;align-items:center;gap:6px">ดูรายละเอียด <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></button>
             </div>
             <div style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px">
-              <div style="width:100%;height:120px;margin-bottom:12px"><image-slot id="reward-bus-100" shape="rounded" radius="14" placeholder="ภาพส่วนลดค่าโดยสาร"></image-slot></div>
+              <img src="assets/reward-bus-discount.jpg" alt="รถโดยสารและคูปองส่วนลดค่าเดินทาง" style="display:block;width:100%;height:120px;object-fit:cover;object-position:center 58%;border-radius:14px;margin-bottom:12px">
               <div style="font-size:10.5px;color:var(--ink-faint);font-weight:700;text-transform:uppercase;letter-spacing:.05em">คูปอง บขส.</div>
               <div style="font-size:16px;font-weight:700;margin:3px 0 6px">ส่วนลดค่าโดยสาร 100 บาท</div>
               <p style="font-size:13px;color:var(--ink-soft);margin:0 0 12px;line-height:1.5">ใช้ได้เส้นทางสายเหนือและอีสาน</p>
@@ -251,7 +250,7 @@
           <div style="padding:0 22px;flex:1">
             <div style="background:#fff;border:1px solid var(--hair);border-radius:var(--radius-lg);padding:18px;margin-bottom:14px">
               <div style="display:flex;gap:12px;align-items:flex-start">
-                <div style="width:56px;height:56px;flex:none"><image-slot id="coupon-bus-50" shape="rounded" radius="12" placeholder="โลโก้/ภาพ"></image-slot></div>
+                <img src="assets/reward-bus-discount.jpg" alt="ภาพคูปองส่วนลดค่าโดยสาร" style="display:block;width:56px;height:56px;object-fit:cover;border-radius:12px;flex:none">
                 <div style="flex:1;display:flex;justify-content:space-between;align-items:flex-start">
                   <div><div style="font-size:10.5px;color:var(--ink-faint);font-weight:700;text-transform:uppercase;letter-spacing:.05em">คูปอง บขส.</div><div style="font-size:16px;font-weight:700;margin-top:3px">มูลค่า 50 บาท</div></div>
                   <svg width="38" height="38" viewBox="0 0 24 24" fill="currentColor" style="flex:none;color:var(--ink)"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
