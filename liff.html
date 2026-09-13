@@ -284,25 +284,40 @@
                 <div style="flex:1;min-width:0">
                   <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:3px">
                     <div style="font-size:10.5px;color:var(--ink-faint);font-weight:700;text-transform:uppercase;letter-spacing:.05em">Partner A Café</div>
-                    <span style="font-size:10px;font-weight:700;color:#17633b;background:#e8f7ee;padding:4px 8px;border-radius:var(--radius-pill);white-space:nowrap">แลกแล้ว · พร้อมใช้</span>
+                    <sc-if value="{{ partnerCouponInactive }}"><span style="font-size:10px;font-weight:700;color:var(--ink-soft);background:var(--surface);padding:4px 8px;border-radius:var(--radius-pill);white-space:nowrap">แลกแล้ว</span></sc-if>
+                    <sc-if value="{{ partnerCouponActive }}"><span style="font-size:10px;font-weight:700;color:#8a4300;background:var(--warn-soft);padding:4px 8px;border-radius:var(--radius-pill);white-space:nowrap">กำลังใช้</span></sc-if>
+                    <sc-if value="{{ partnerCouponExpired }}"><span style="font-size:10px;font-weight:700;color:#a61b1b;background:#feecec;padding:4px 8px;border-radius:var(--radius-pill);white-space:nowrap">หมดเวลา</span></sc-if>
                   </div>
                   <div style="font-size:15px;font-weight:700;line-height:1.35">เครื่องดื่ม 1 แก้ว + ครัวซองต์</div>
                   <div style="font-size:11.5px;color:var(--ink-faint);margin-top:3px">หมดอายุ 30 ก.ย. 2569</div>
                 </div>
               </div>
-              <div style="background:var(--surface);border-radius:14px;padding:12px 13px;margin:14px 0">
-                <div style="font-size:10.5px;color:var(--ink-faint);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">รหัสสำหรับใช้สิทธิ์</div>
-                <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
-                  <span style="font-family:ui-monospace,monospace;font-size:14px;font-weight:800;letter-spacing:.04em">PARTNERA-ICE-8K4M</span>
-                  <button onClick="{{ copyPartnerCode }}" style="border:1px solid var(--hair);background:#fff;color:var(--ink);border-radius:var(--radius-pill);padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap">{{ partnerCopyLabel }}</button>
+              <sc-if value="{{ partnerCouponInactive }}">
+                <div style="background:var(--warn-soft);border-radius:14px;padding:13px 14px;margin:14px 0 12px;color:#7a3d0b;font-size:11.5px;line-height:1.55"><b>เปิดใช้เมื่ออยู่ที่หน้าร้านเท่านั้น</b><br>หลังจากกด รหัสจะปรากฏและใช้ได้ภายใน 15 นาที เมื่อหมดเวลาแล้วจะไม่สามารถเปิดรหัสเดิมได้อีก</div>
+                <button onClick="{{ activatePartnerCoupon }}" style="border:none;cursor:pointer;background:var(--accent);color:#fff;font-weight:700;font-size:14px;padding:14px 18px;border-radius:var(--radius-pill);width:100%;display:flex;align-items:center;justify-content:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>ใช้คูปองตอนนี้</button>
+              </sc-if>
+              <sc-if value="{{ partnerCouponActive }}">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--warn-soft);border:1px solid rgba(245,130,31,.18);border-radius:14px;padding:12px 14px;margin:14px 0 10px">
+                  <div style="font-size:11.5px;color:#7a3d0b;line-height:1.45"><b>แสดงรหัสแก่พนักงาน</b><br>รหัสจะหมดอายุใน</div>
+                  <div style="font-family:ui-monospace,monospace;font-size:25px;font-weight:800;color:#8a4300;letter-spacing:.02em">{{ partnerTimerLabel }}</div>
                 </div>
-              </div>
-              <div style="font-size:12px;font-weight:700;margin-bottom:9px">วิธีใช้สิทธิ์ที่ร้าน</div>
-              <div style="display:flex;flex-direction:column;gap:9px;font-size:12px;color:var(--ink-soft);line-height:1.45">
-                <div style="display:flex;gap:9px"><span style="display:grid;place-items:center;width:20px;height:20px;flex:none;border-radius:50%;background:var(--ink);color:#fff;font-size:10px;font-weight:700">1</span><span>แจ้งพนักงานว่าต้องการใช้ e-voucher ก่อนสั่งสินค้า</span></div>
-                <div style="display:flex;gap:9px"><span style="display:grid;place-items:center;width:20px;height:20px;flex:none;border-radius:50%;background:var(--ink);color:#fff;font-size:10px;font-weight:700">2</span><span>แสดงรหัส <b style="color:var(--ink)">PARTNERA-ICE-8K4M</b> ที่หน้าร้าน</span></div>
-                <div style="display:flex;gap:9px"><span style="display:grid;place-items:center;width:20px;height:20px;flex:none;border-radius:50%;background:var(--ink);color:#fff;font-size:10px;font-weight:700">3</span><span>ให้พนักงานตรวจสอบและยืนยันสิทธิ์ก่อนรับสินค้า</span></div>
-              </div>
+                <div style="background:var(--surface);border-radius:14px;padding:12px 13px;margin-bottom:14px">
+                  <div style="font-size:10.5px;color:var(--ink-faint);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">รหัสสำหรับใช้สิทธิ์</div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+                    <span style="font-family:ui-monospace,monospace;font-size:14px;font-weight:800;letter-spacing:.04em">PARTNERA-ICE-8K4M</span>
+                    <button onClick="{{ copyPartnerCode }}" style="border:1px solid var(--hair);background:#fff;color:var(--ink);border-radius:var(--radius-pill);padding:6px 10px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap">{{ partnerCopyLabel }}</button>
+                  </div>
+                </div>
+                <div style="font-size:12px;font-weight:700;margin-bottom:9px">วิธีใช้สิทธิ์ที่ร้าน</div>
+                <div style="display:flex;flex-direction:column;gap:9px;font-size:12px;color:var(--ink-soft);line-height:1.45">
+                  <div style="display:flex;gap:9px"><span style="display:grid;place-items:center;width:20px;height:20px;flex:none;border-radius:50%;background:var(--ink);color:#fff;font-size:10px;font-weight:700">1</span><span>แจ้งพนักงานว่าต้องการใช้ e-voucher ก่อนสั่งสินค้า</span></div>
+                  <div style="display:flex;gap:9px"><span style="display:grid;place-items:center;width:20px;height:20px;flex:none;border-radius:50%;background:var(--ink);color:#fff;font-size:10px;font-weight:700">2</span><span>แสดงรหัส <b style="color:var(--ink)">PARTNERA-ICE-8K4M</b> ที่หน้าร้าน</span></div>
+                  <div style="display:flex;gap:9px"><span style="display:grid;place-items:center;width:20px;height:20px;flex:none;border-radius:50%;background:var(--ink);color:#fff;font-size:10px;font-weight:700">3</span><span>ให้พนักงานตรวจสอบและยืนยันสิทธิ์ก่อนรับสินค้า</span></div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ partnerCouponExpired }}">
+                <div style="background:#feecec;border-radius:14px;padding:14px;margin:14px 0;color:#8f1d1d;font-size:12px;line-height:1.55"><b>หมดเวลาใช้คูปองแล้ว</b><br>รหัสถูกซ่อนเพื่อความปลอดภัย กรุณาติดต่อฝ่ายบริการลูกค้าเพื่อขอความช่วยเหลือ</div>
+              </sc-if>
               <div style="font-size:11px;color:var(--ink-faint);line-height:1.5;border-top:1px solid var(--hair);margin-top:14px;padding-top:11px">ใช้ได้ 1 ครั้ง · ไม่สามารถแลกเป็นเงินสด · เงื่อนไขเป็นข้อมูลตัวอย่าง</div>
             </div>
           </div>
@@ -356,7 +371,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { screen: 'l1', qrOpen: false, otpSent: false, partnerCodeCopied: false };
+  state = { screen: 'l1', qrOpen: false, otpSent: false, partnerCodeCopied: false, partnerCouponActivated: false, partnerSecondsLeft: 900 };
 
   go(s) { return () => this.setState({ screen: s, qrOpen: false }); }
 
@@ -365,6 +380,8 @@ class Component extends DCLogic {
     const active = (v) => v === s ? '#152244' : 'rgba(21,34,68,.38)';
     const navBg = (v) => v === s ? '#fdeaf3' : 'transparent';
     const pill = (v) => v === s ? '#f7f6f9' : 'transparent';
+    const remaining = this.state.partnerSecondsLeft;
+    const timerLabel = `${Math.floor(remaining / 60)}:${String(remaining % 60).padStart(2, '0')}`;
     return {
       isL1: s === 'l1', isL2: s === 'l2', isL2b: s === 'l2b', isL2c: s === 'l2c', isL3: s === 'l3', isL4: s === 'l4',
       isL5: s === 'l5', isL6: s === 'l6', isL7: s === 'l7', isL8: s === 'l8',
@@ -378,6 +395,19 @@ class Component extends DCLogic {
       toL5: this.go('l5'), toL6: this.go('l6'), toL7: this.go('l7'), toL8: this.go('l8'),
       openQr: () => this.setState({ qrOpen: true }),
       closeQr: () => this.setState({ qrOpen: false }),
+      partnerCouponInactive: !this.state.partnerCouponActivated,
+      partnerCouponActive: this.state.partnerCouponActivated && remaining > 0,
+      partnerCouponExpired: this.state.partnerCouponActivated && remaining === 0,
+      partnerTimerLabel: timerLabel,
+      activatePartnerCoupon: () => {
+        if (this.state.partnerCouponActivated) return;
+        this.setState({ partnerCouponActivated: true, partnerSecondsLeft: 900, partnerCodeCopied: false });
+        this.partnerTimer = setInterval(() => {
+          const next = Math.max(0, this.state.partnerSecondsLeft - 1);
+          this.setState({ partnerSecondsLeft: next });
+          if (next === 0) clearInterval(this.partnerTimer);
+        }, 1000);
+      },
       partnerCopyLabel: this.state.partnerCodeCopied ? 'คัดลอกแล้ว' : 'คัดลอก',
       copyPartnerCode: () => {
         if (navigator.clipboard) navigator.clipboard.writeText('PARTNERA-ICE-8K4M');
