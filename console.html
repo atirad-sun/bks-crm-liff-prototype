@@ -374,26 +374,26 @@
           <div onClick="{{ selectItem2 }}" style="padding:13px 11px;border-radius:var(--radius-md);cursor:pointer;background:{{ item2Bg }}"><div style="font-size:13px;font-weight:500">แคมเปญนักเรียน-นักศึกษา</div><div style="font-size:11.5px;color:var(--ink-faint);margin-top:2px">กมลชนก · เมื่อวาน</div></div>
         </div>
         <div>
-          <div style="margin-bottom:22px"><h1 style="margin:0 0 6px;font-size:20px;font-weight:500">{{ selectedTitle }}</h1><span style="display:inline-flex;align-items:center;gap:6px;font-size:13px"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);display:inline-block"></span>รออนุมัติ · ขั้น 1 ของ 2 (Approver → Budget owner)</span></div>
+          <div style="margin-bottom:22px"><h1 style="margin:0 0 6px;font-size:20px;font-weight:500">{{ selectedTitle }}</h1><span style="display:inline-flex;align-items:center;gap:6px;font-size:13px"><span style="width:6px;height:6px;border-radius:50%;background:var(--warn);display:inline-block"></span>{{ selectedStatus }}</span><div style="font-size:11.5px;color:var(--ink-faint);margin-top:5px">ส่งโดย {{ selectedRequester }}</div></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-bottom:22px">
             <div>
               <h2 style="font-size:13.5px;font-weight:600;margin:0 0 10px">สรุปแคมเปญ</h2>
               <div style="font-size:13.5px;display:flex;flex-direction:column">
-                <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--hair);padding:9px 0"><span style="color:var(--ink-soft)">ประเภท</span><span style="font-weight:500">e-voucher — คูปอง</span></div>
-                <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--hair);padding:9px 0"><span style="color:var(--ink-soft)">ช่วงเวลา</span><span style="font-weight:500">15 ก.ย. – 15 ต.ค.</span></div>
-                <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--hair);padding:9px 0"><span style="color:var(--ink-soft)">Quota</span><span style="font-weight:500">2,000</span></div>
-                <div style="display:flex;justify-content:space-between;padding:9px 0"><span style="color:var(--ink-soft)">กลุ่มเป้าหมาย</span><span style="font-weight:500">เฉพาะจังหวัด + ยอดใช้จ่าย ≥ 500 บาท/เดือน</span></div>
+                <div style="display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--hair);padding:9px 0"><span style="color:var(--ink-soft)">ประเภท</span><span style="font-weight:500;text-align:right">{{ selectedType }}</span></div>
+                <div style="display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--hair);padding:9px 0"><span style="color:var(--ink-soft)">ช่วงเวลา</span><span style="font-weight:500;text-align:right">{{ selectedPeriod }}</span></div>
+                <div style="display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--hair);padding:9px 0"><span style="color:var(--ink-soft)">Quota</span><span style="font-weight:500;text-align:right">{{ selectedQuota }}</span></div>
+                <div style="display:flex;justify-content:space-between;gap:20px;padding:9px 0"><span style="color:var(--ink-soft);flex:none">กลุ่มเป้าหมาย</span><span style="font-weight:500;text-align:right">{{ selectedAudience }}</span></div>
               </div>
               <h2 style="font-size:13.5px;font-weight:600;margin:18px 0 10px">Diff กับเวอร์ชันก่อน</h2>
               <div style="font-size:12.5px;border:1px solid var(--hair);padding:11px 13px;border-radius:var(--radius-md);display:flex;flex-direction:column;gap:8px">
-                <div><span style="color:var(--ink-soft)">Budget cap:</span> <span style="text-decoration:line-through;color:var(--ink-faint)">฿80,000</span> → <span style="color:var(--accent-ink);font-weight:600">฿120,000</span></div>
-                <div><span style="color:var(--ink-soft)">เงื่อนไขกลุ่มเป้าหมาย:</span> <span style="color:var(--accent-ink);font-weight:600">+ เพิ่ม "ยอดใช้จ่าย ≥ 500 บาท/เดือน"</span></div>
+                <div><span style="color:var(--ink-soft)">{{ selectedDiffLabel1 }}:</span> <span style="text-decoration:line-through;color:var(--ink-faint)">{{ selectedDiffOld1 }}</span> → <span style="color:var(--accent-ink);font-weight:600">{{ selectedDiffNew1 }}</span></div>
+                <div><span style="color:var(--ink-soft)">{{ selectedDiffLabel2 }}:</span> <span style="text-decoration:line-through;color:var(--ink-faint)">{{ selectedDiffOld2 }}</span> → <span style="color:var(--accent-ink);font-weight:600">{{ selectedDiffNew2 }}</span></div>
               </div>
             </div>
             <div>
               <h2 style="font-size:13.5px;font-weight:600;margin:0 0 10px">ผลกระทบงบ</h2>
-              <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:16px;margin-bottom:10px"><div style="font-size:11.5px;color:var(--ink-soft)">งบแคมเปญนี้</div><div style="font-size:19px;font-weight:500;margin-top:6px">฿120,000</div></div>
-              <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:16px"><div style="font-size:11.5px;color:var(--ink-soft)">งบรวมเดือนหลังอนุมัติ</div><div style="font-size:19px;font-weight:500;margin-top:6px">฿1.32M / ฿2.0M</div></div>
+              <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:16px;margin-bottom:10px"><div style="font-size:11.5px;color:var(--ink-soft)">งบแคมเปญนี้</div><div style="font-size:19px;font-weight:500;margin-top:6px">{{ selectedBudget }}</div></div>
+              <div style="border:1px solid var(--hair);border-radius:var(--radius-lg);padding:16px"><div style="font-size:11.5px;color:var(--ink-soft)">งบรวมเดือนหลังอนุมัติ</div><div style="font-size:19px;font-weight:500;margin-top:6px">{{ selectedMonthlyBudget }}</div></div>
             </div>
           </div>
           <div style="max-width:480px;margin-bottom:16px"><label style="display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px">เหตุผล (จำเป็นเมื่อตีกลับ)</label><textarea placeholder="ระบุเหตุผลที่ตีกลับ..." style="width:100%;box-sizing:border-box;border:1px solid var(--hair);border-radius:var(--radius-md);padding:10px 13px;font-size:14px;font-family:inherit;min-height:70px"></textarea></div>
@@ -1290,7 +1290,39 @@ class Component extends DCLogic {
       c10: 'Users & roles',
       c11: 'Reports', c12: 'Risk', c13: 'Rewards catalog / Reconciliation',
     };
-    const items = ['คูปองใหม่ร้านสะดวกซื้อ B', 'ปรับ budget cap สายเหนือ', 'แคมเปญนักเรียน-นักศึกษา'];
+    const approvalItems = [
+      {
+        title: 'คูปองใหม่ร้านสะดวกซื้อ B',
+        status: 'รออนุมัติ · ขั้น 1 ของ 2 (Approver → Budget owner)',
+        requester: 'กมลชนก (Creator) · 2 ชม.ที่แล้ว',
+        type: 'e-voucher — คูปอง', period: '15 ก.ย. – 15 ต.ค.', quota: '2,000 สิทธิ์',
+        audience: 'เฉพาะจังหวัด + ยอดใช้จ่าย ≥ 500 บาท/เดือน',
+        diffLabel1: 'Budget cap', diffOld1: '฿80,000', diffNew1: '฿120,000',
+        diffLabel2: 'เงื่อนไขกลุ่มเป้าหมาย', diffOld2: 'เฉพาะจังหวัด', diffNew2: '+ ยอดใช้จ่าย ≥ 500 บาท/เดือน',
+        budget: '฿120,000', monthlyBudget: '฿1.32M / ฿2.0M',
+      },
+      {
+        title: 'ปรับ budget cap สายเหนือ',
+        status: 'รออนุมัติ · ขั้น 2 ของ 2 (Budget owner)',
+        requester: 'ธนกร (Approver) · เมื่อวาน 16:20',
+        type: 'ส่วนลดค่าโดยสาร', period: '1 ต.ค. – 30 พ.ย.', quota: '5,000 สิทธิ์',
+        audience: 'สมาชิกที่เดินทางสายเหนือภายใน 90 วัน',
+        diffLabel1: 'Budget cap', diffOld1: '฿200,000', diffNew1: '฿350,000',
+        diffLabel2: 'Quota', diffOld2: '3,000 สิทธิ์', diffNew2: '5,000 สิทธิ์',
+        budget: '฿350,000', monthlyBudget: '฿1.55M / ฿2.0M',
+      },
+      {
+        title: 'แคมเปญนักเรียน-นักศึกษา',
+        status: 'รออนุมัติ · ขั้น 1 ของ 2 (Approver → Budget owner)',
+        requester: 'กมลชนก (Creator) · เมื่อวาน 10:05',
+        type: 'โบนัสแต้ม x2', period: '1 ต.ค. – 31 ธ.ค.', quota: '20,000 สมาชิก',
+        audience: 'ยืนยันสถานะนักเรียน/นักศึกษา · อายุ 15–25 ปี',
+        diffLabel1: 'ช่วงอายุ', diffOld1: '18–25 ปี', diffNew1: '15–25 ปี',
+        diffLabel2: 'ยอดใช้จ่ายขั้นต่ำ', diffOld2: '฿300 / เที่ยว', diffNew2: 'ไม่กำหนดขั้นต่ำ',
+        budget: '฿240,000', monthlyBudget: '฿1.44M / ฿2.0M',
+      },
+    ];
+    const selectedApproval = approvalItems[item] || approvalItems[0];
 
     // C6
     const c6M = this.state.c6Modal;
@@ -1357,7 +1389,21 @@ class Component extends DCLogic {
       step1Bg: st1.bg, step1Ink: st1.ink, step2Bg: st2.bg, step2Ink: st2.ink, step3Bg: st3.bg, step3Ink: st3.ink, step4Bg: st4.bg, step4Ink: st4.ink,
       selectItem0: () => this.setState({ approvalItem: 0 }), selectItem1: () => this.setState({ approvalItem: 1 }), selectItem2: () => this.setState({ approvalItem: 2 }),
       item0Bg: item === 0 ? '#fdeaf3' : 'transparent', item1Bg: item === 1 ? '#fdeaf3' : 'transparent', item2Bg: item === 2 ? '#fdeaf3' : 'transparent',
-      selectedTitle: items[item],
+      selectedTitle: selectedApproval.title,
+      selectedStatus: selectedApproval.status,
+      selectedRequester: selectedApproval.requester,
+      selectedType: selectedApproval.type,
+      selectedPeriod: selectedApproval.period,
+      selectedQuota: selectedApproval.quota,
+      selectedAudience: selectedApproval.audience,
+      selectedDiffLabel1: selectedApproval.diffLabel1,
+      selectedDiffOld1: selectedApproval.diffOld1,
+      selectedDiffNew1: selectedApproval.diffNew1,
+      selectedDiffLabel2: selectedApproval.diffLabel2,
+      selectedDiffOld2: selectedApproval.diffOld2,
+      selectedDiffNew2: selectedApproval.diffNew2,
+      selectedBudget: selectedApproval.budget,
+      selectedMonthlyBudget: selectedApproval.monthlyBudget,
       stopClick: this.stopClick.bind(this),
 
       c3Rules: (this.state.c3Rules || []).map((r, i) => ({
