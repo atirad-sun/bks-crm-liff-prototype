@@ -123,3 +123,12 @@ a.feed .chev{margin-left:auto;color:var(--muted);align-self:center}
 .countdown{font:700 24px ui-monospace,monospace;color:#8f004d;font-variant-numeric:tabular-nums}
 .use-steps{padding-left:20px;margin:0;line-height:1.8}.use-steps li{margin-bottom:6px}
 @media(max-width:740px){.pool-stats{grid-template-columns:1fr 1fr}}
+
+/* v0.3 role-based views */
+.role-chip{font-size:11.5px;font-weight:700;border-radius:999px;padding:4px 10px;white-space:nowrap;background:#eef1f6;color:#3a4760}
+.role-chip.role-admin{background:#152244;color:#fff}.role-chip.role-maker-checker{background:#f2e9ff;color:#5b2a99}
+.role-chip.role-maker{background:#fff0f7;color:#8f004d}.role-chip.role-checker{background:#e8f6ef;color:var(--green)}
+.role-note{font-size:12px;color:var(--muted);margin:12px 0 0;padding:8px 12px;background:#f5f6fa;border-radius:8px}
+.quick-grid:empty{display:none}
+.denied{max-width:560px;margin:40px auto;text-align:center;padding:40px}
+@media(max-width:740px){.role-chip{display:none}}

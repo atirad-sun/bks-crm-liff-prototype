@@ -76,3 +76,20 @@ Requested change: the Console must not create or manage discounts itself. The **
 4. **Codes are bearer value.** Mask them in the UI, keep full codes only in admin exports, have the issuer bind each code to single use and an expiry, and void unissued codes on their side when a batch is voided here.
 5. **Agree a file contract with the e-ticket vendor and partners:** column order, code format/charset, per-code expiry, batch reference, and how the discount amount maps to the coupon's face value. This is the only integration point and it is one-way.
 6. **Production:** code assignment must be an atomic single-writer operation (no double assignment under concurrency), and the activation window should be enforced server-side; this prototype runs in localStorage only.
+
+## Role-based views — added 2026-10-25
+
+Switching the demo user (top-right) now changes what the Console shows. The current role appears as a chip next to the user switcher. If the new role can't see the current page, the Console returns to Overview.
+
+| Role (demo user) | Can do | Menus shown |
+| --- | --- | --- |
+| Tenant Admin (อรทัย) | Create, approve, admin (users, billing, support, export, Platform Admin) | All |
+| Maker + Checker (กิตติ) | Create and approve | All except Users, Billing, Support |
+| **Maker** (ธนา) — new | Create/edit and submit for approval; import codes; cannot approve | Workspace, Marketing, Approvals (view own requests), Members, Tiers, Points, Reports, Integrations, Requirements |
+| **Checker** (วิภา) — new | Approve or return requests only; cannot create or edit | Overview, Coupons, Campaigns, Segments, Rewards, Approvals, Members, Tiers, Points, Reports, Requirements |
+| Analyst (มาลี) | Read only | Overview, Demographics, Coupons, Campaigns, Segments, Rewards, Experiments, Reports, Requirements |
+
+- Buttons for actions the role can't use are removed, including in dialogs and quick-create tiles. Forms the role can't submit (points policy, message compose, checker pools) become read-only with a note. The ⌘K palette only lists allowed pages and actions.
+- The new Checker is in every checker pool. The new Maker is in none, so a Maker's request always needs someone else to approve it.
+- Opening a hidden page by URL shows an access notice instead of the page.
+- This is UI-level enforcement in the prototype; production must enforce the same matrix server-side.
