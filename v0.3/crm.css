@@ -132,3 +132,16 @@ a.feed .chev{margin-left:auto;color:var(--muted);align-self:center}
 .quick-grid:empty{display:none}
 .denied{max-width:560px;margin:40px auto;text-align:center;padding:40px}
 @media(max-width:740px){.role-chip{display:none}}
+
+/* v0.3 live LIFF → Console sync */
+.live-badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--green);background:#e8f6ef;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.live-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor;animation:live-pulse 1.8s ease-in-out infinite}
+@keyframes live-pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.live-feed{display:grid;gap:2px}
+.live-item{display:flex;gap:12px;align-items:flex-start;padding:10px;border-radius:10px;font-size:13px;transition:background 1s}
+.live-ico{width:32px;height:32px;border-radius:9px;background:#f3f5f9;color:#5a667c;display:grid;place-items:center;flex:none}
+.live-ico svg{width:17px;height:17px}
+.live-item.flash,tr.flash td{background:#fff4d6}
+tr td{transition:background 1.2s}
+.toast.live{background:#0b5e49}
+@media(prefers-reduced-motion:reduce){.live-badge::before{animation:none}}

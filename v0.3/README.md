@@ -93,3 +93,13 @@ Switching the demo user (top-right) now changes what the Console shows. The curr
 - The new Checker is in every checker pool. The new Maker is in none, so a Maker's request always needs someone else to approve it.
 - Opening a hidden page by URL shows an access notice instead of the page.
 - This is UI-level enforcement in the prototype; production must enforce the same matrix server-side.
+
+## Live LIFF → Console sync (same browser) — added 2026-10-25
+
+LIFF actions now reach the Marketing Console immediately, without a backend. This works when both are open in the **same browser** (two tabs or windows, locally or on the GitHub Pages link).
+
+- **What syncs:** redeeming a coupon, tapping ใช้คูปอง, registering, changing marketing consent and privacy requests are recorded as LIFF activity. Budget, coupon status, code stock and member points update from the same shared data.
+- **Console:** refreshes in place (no page reload). It shows a green toast per LIFF action, a **กิจกรรมจาก LINE LIFF** feed on Overview and **ล่าสุดจาก LINE LIFF** on Coupons, briefly highlights the changed rows, and shows a "LIFF สด" indicator. While you are typing or inside a guided editor, the refresh waits until your next action so nothing you're editing is replaced.
+- **LIFF:** also refreshes live, for example when codes are imported in the Console, and stays logged in.
+- **Per-screen settings are kept separate:** the Console owns tenant, demo user and operator mode; the LIFF owns login and member. A save from one tab never resets the other's selection.
+- **Limits:** different browsers or devices do not sync (each browser has its own storage). A phone-to-laptop demo needs a small hosted relay or realtime database; that is the next step if required. Two tabs saving at the same instant is last-write-wins; that is acceptable for a demo but not for production.
