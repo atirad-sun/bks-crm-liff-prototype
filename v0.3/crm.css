@@ -106,3 +106,20 @@ a.feed .chev{margin-left:auto;color:var(--muted);align-self:center}
 .icon-menu{display:none}
 @media(max-width:740px){.icon-menu{display:inline-flex}.stat{font-size:26px}h1{font-size:24px}}
 .palette-trigger span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}.palette-trigger kbd,.palette-trigger svg{flex:none}
+/* v0.3 code pools, import and coupon activation */
+.stock{margin:14px 0;padding:12px 14px;border-radius:10px;background:#f4f8f6;font-size:13px}
+.stock .progress{margin:8px 0 4px}.stock .progress i{background:var(--green)}
+.stock.low{background:#fff6ea}.stock.low .progress i{background:#d9822b}.stock.low small{color:var(--orange)}
+.stock.empty{background:var(--danger-bg)}.stock.empty small{color:var(--danger)}
+.pool-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pool-stat{border:1px solid var(--line);border-radius:10px;padding:12px}
+.pool-stat strong{display:block;font-size:22px;margin-top:4px}
+.pool-stat.good strong{color:var(--green)}.pool-stat.bad strong{color:var(--danger)}
+.code.masked{color:#8a94a6;letter-spacing:.12em}
+.coupon-ticket.live{border:2px solid var(--pink);box-shadow:0 8px 28px #e6007e1f}
+.coupon-ticket.done{background:#fafbfc}.coupon-ticket.done h2{color:#5a667c}
+.use-live{display:flex;align-items:baseline;justify-content:space-between;background:#fff0f7;border-radius:10px;padding:10px 14px;margin-bottom:10px}
+.use-live small{color:#8f004d}
+.countdown{font:700 24px ui-monospace,monospace;color:#8f004d;font-variant-numeric:tabular-nums}
+.use-steps{padding-left:20px;margin:0;line-height:1.8}.use-steps li{margin-bottom:6px}
+@media(max-width:740px){.pool-stats{grid-template-columns:1fr 1fr}}
